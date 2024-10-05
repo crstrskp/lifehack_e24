@@ -1,4 +1,4 @@
-# Lifehack Spring 2024 - team A
+# Lifehack Spring 2024
 
 ![Lifehack](src/main/resources/public/images/lifehacklogo.png)
 
