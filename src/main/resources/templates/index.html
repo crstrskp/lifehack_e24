@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>Frontpage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="page">
+    <header>
+        <a href="index.html" th:href="@{/}">
+            <img alt="logo" src="../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
+        </a>
+    </header>
+    <h1>Lifehack</h1>
+        <div class="projects">
+            <h2>Projects to check out</h2>
+            <div class="cards">
+                <div class="card">
+                    <img class="card-image" alt="timezones" src="../public/images/timezones/timezone_icon.jpg" th:src="@{/images/timezones/timezone_icon.jpg}"/>
+                    <div class="card-copy">Check the clock, everywhere</div>
+                    <a class="card-link" href="timezones/index.html" th:href="@{/timezones/}"/>Timezones</a>
+                </div>
+                <div class="card">
+                    <img class="card-image" alt="warhammer" src="../public/images/warhammerLogo.png" th:src="@{/images/warhammerLogo.png}"/>
+                    <div class="card-copy">Generate Warhammer bases for 3D print</div>
+                    <a class="card-link" href="warhammer/index.html" th:href="@{/warhammer/}">Warhammer Bases</a>
+                </div>
+            </div>
+        </div>
+    <h3>If you need to log in - do it here</h3>
+    <form class="generic-form" method="post">
+        <input type="text" name="username" placeholder="Enter your username"/>
+        <input type="password" name="password" placeholder="Enter your password"/>
+        <button class="btn btn-ok" type="submit" formaction="/login">Login</button>
+        <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+    </form>
+
+    <div>
+        <a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Logout</a>
+        <span th:if="${session.currentUser != null}"> | </span>
+        <a href="createuser.html" th:href="@{/createuser}">Create user</a>
+    </div>
+</div>
+</body>
+</html>
+
