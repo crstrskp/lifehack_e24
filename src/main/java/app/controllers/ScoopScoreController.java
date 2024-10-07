@@ -8,11 +8,11 @@ public class ScoopScoreController
 {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool)
     {
-        app.get("/projectname", ctx -> index(ctx, connectionPool));
+        app.get("/scoopscore", ctx -> index(ctx, connectionPool));
     }
 
     private static void index(Context ctx, ConnectionPool connectionPool)
     {
-        ctx.render("/projectname/index.html");
+        ctx.render("/scoopscore/index.html");
     }
 }
