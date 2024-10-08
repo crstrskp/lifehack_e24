@@ -5,33 +5,35 @@
 class Main {
 + public static void main(String args[])
 }
+package entities {
+    class Motivation {
+    + String motivationTitle
+    + String motivationText
+    + String imageURL
+    - int motivationId
+    + public Motivation(String motivationTitle, String motivationBody)
+    + public Motivation(String title, String text, String imageURL)
+    + getMotivationName()
+    + getMotivationText()
+    + getMotivationImageURL()
 
-class Motivation {
-+ String motivationTitle
-+ String motivationText
-+ public Motivation(String motivationTitle, String motivationBody)
-+ public Motivation(String title, String text, String imageURL)
-+ getMotivationName()
-+ getMotivationText()
-+ getMotivationImageURL()
-
+    }
 }
-
-class MotivationMapper {
-- String motivationTitle
-- String motivationText
-- String imageURL
-
-+ void newMotivation(String motivationTitle, String motivationText,  String imageURL)
-+ void deleteMotivation(String motivationTitle)
-
+package persistance {
+    class MotivationMapper {
+    + void newMotivation(String motivationTitle, String motivationText,  String imageURL)
+    + void deleteMotivation(int motivationId)
+    + Motivation getMotivation()
+    + List<Motivation> getMotivations()
+    }
 }
-class MotivationController {
-+ void addRoutes()
-+ Motivation addMotivation()
-+ Motivation showMotivation()
+package controllers {
+    class MotivationController {
+    + void addRoutes()
+    + void addMotivation()
+    + void showMotivation()
+    }
 }
-
 Main *-- MotivationController
 MotivationController o-- Motivation
 @enduml
