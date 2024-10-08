@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<title>Forside</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-</head>
+<head th:replace="~{fragments :: head('Motivational 8-ball')}"></head>
 
 <body>
 
 <div class="page">
-    <header>
-        <a href="../index.html" th:href="@{/public}">
-            <img alt="logo" src="../../public/images/8ball-logo.png" th:src="@{/images/8ball-logo.png}"/>
-        </a>
+    <header th:replace="~{fragments :: header('Motivational 8-ball')}">
     </header>
     <h1>Motivational Quotes</h1>
         <div class="motivation">
@@ -28,13 +21,9 @@
         <button class="btn btn-ok" type="submit" formaction="/login">Login</button>
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
     </form>
-<!--
-    <div>
-        <a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Logout</a>
-        <span th:if="${session.currentUser != null}"> | </span>
-        <a href="createuser.html" th:href="@{/createuser}">Create user</a>
-    </div>
--->
+
+
+    <footer th:replace="~{fragments :: footer}" class="footer-container"></footer>
 </div>
 </body>
 </html>
