@@ -1,4 +1,5 @@
 -- Roles Table: defines roles like 'guest', 'user', 'admin_basic', 'admin_super'
+-- TODO: rewrite users table to match lifehack DB, put new columns into a seperate table
 CREATE TABLE roles (
                        id SERIAL PRIMARY KEY,
                        role_name VARCHAR(50) UNIQUE NOT NULL  -- Possible values: 'guest', 'user', 'admin_basic', 'admin_super'
