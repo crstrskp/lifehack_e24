@@ -1,7 +1,6 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-
 class Main {
 + public static void main(String args[])
 }
