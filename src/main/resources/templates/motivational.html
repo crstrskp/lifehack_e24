@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>Forside</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="page">
+    <header>
+        <a href="index.html" th:href="@{/}">
+            <img alt="logo" src="../public/images/8ball-logo.png" th:src="@{/images/8ball-logo.png}"/>
+        </a>
+    </header>
+    <h1>Motivational Quotes</h1>
+        <div class="motivation">
+            <h2>Få et tilfældigt citat vist neden for </h2>
+            <button class="quote-btn" type="submit" name="get-quote" formaction="/getquotes">Giv mig motivation</button>
+        </div>
+
+    <h4> Log ind og upload dit eget </h4>
+    <form class="generic-form" method="post">
+        <input type="text" name="username" placeholder="Enter your username"/>
+        <input type="password" name="password" placeholder="Enter your password"/>
+        <button class="btn btn-ok" type="submit" formaction="/login">Login</button>
+        <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+    </form>
+<!--
+    <div>
+        <a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Logout</a>
+        <span th:if="${session.currentUser != null}"> | </span>
+        <a href="createuser.html" th:href="@{/createuser}">Create user</a>
+    </div>
+-->
+</div>
+</body>
+</html>
+
