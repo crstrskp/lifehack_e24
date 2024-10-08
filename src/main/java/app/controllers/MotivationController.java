@@ -25,7 +25,7 @@ public class MotivationController {
         Motivation quote = MotivationMapper.getMotivation(pool);
         ctx.attribute("motivation", quote);
 
-        ctx.render("motivational/motivational.html");
+        ctx.render("/motivational/motivational.html");
 
     }
 
