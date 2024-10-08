@@ -6,8 +6,8 @@ import io.javalin.http.Context;
 
 public class ContactFormController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
-        app.get("/contact", ctx -> ctx.render("contact.html"));
-        app.post("/contact", ctx -> contactHandler(ctx));
+        app.get("/gruppeg/contact", ctx -> ctx.render("/gruppeg/contact"));
+        app.post("/gruppeg/contact", ctx -> contactHandler(ctx));
     }
 
     private static void contactHandler(Context ctx) {
@@ -17,26 +17,26 @@ public class ContactFormController {
 
         if (name == null || name.isEmpty()) {
             ctx.attribute("error", "Name is required.");
-            ctx.render("contact.html");
+            ctx.render("/gruppeg/contact");
             return;
         }
 
         if (email == null || email.isEmpty()) {
             ctx.attribute("error", "Email is required.");
-            ctx.render("contact.html");
+            ctx.render("/gruppeg/contact");
             return;
         }
 
         if (message == null || message.length() < 20 || message.length() > 250) {
             ctx.attribute("error", "Message must be between 20 and 250 characters.");
-            ctx.render("contact.html");
+            ctx.render("/gruppeg/contact");
             return;
         }
 
         ctx.attribute("error", null);
         ctx.attribute("success", "Your message has been sent successfully!");
 
-        ctx.render("contact.html");
+        ctx.render("/gruppeg/contact");
 
     }
 }
