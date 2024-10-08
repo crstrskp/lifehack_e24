@@ -9,6 +9,8 @@ package entities {
     class Motivation {
     + String motivationTitle
     + String motivationText
+    + String imageURL
+    - int motivationId
     + public Motivation(String motivationTitle, String motivationBody)
     + public Motivation(String title, String text, String imageURL)
     + getMotivationName()
@@ -19,13 +21,10 @@ package entities {
 }
 package persistance {
     class MotivationMapper {
-    - String motivationTitle
-    - String motivationText
-    - String imageURL
-
     + void newMotivation(String motivationTitle, String motivationText,  String imageURL)
-    + void deleteMotivation(String motivationTitle)
-
+    + void deleteMotivation(int motivationId)
+    + Motivation getMotivation()
+    + List<Motivation> getMotivations()
     }
 }
 package controllers {
