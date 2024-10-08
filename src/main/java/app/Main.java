@@ -1,7 +1,7 @@
 package app;
 
 import app.config.ThymeleafConfig;
-import app.controllers.KontaktFormularController;
+import app.controllers.ContactFormController;
 import app.controllers.TimeZonesController;
 import app.controllers.UserController;
 import app.controllers.WarhammerController;
@@ -35,6 +35,6 @@ public class Main
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app);
         WarhammerController.addRoutes(app);
-        KontaktFormularController.addRoutes(app, connectionPool);
+        ContactFormController.addRoutes(app, connectionPool);
     }
 }

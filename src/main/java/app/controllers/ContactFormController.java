@@ -3,9 +3,8 @@ package app.controllers;
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
-import org.jetbrains.annotations.NotNull;
 
-public class KontaktFormularController {
+public class ContactFormController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.get("/contact", ctx -> ctx.render("contact.html"));
         app.post("/contact", ctx -> contactHandler(ctx));
