@@ -14,7 +14,8 @@
     <h1>Motivational Quotes</h1>
         <div class="motivation">
             <h2>Få et tilfældigt citat vist neden for </h2>
-            <button class="quote-btn" type="submit" name="get-quote" formaction="/getquotes">Giv mig motivation</button>
+            <p th:text="@{motivation.motivationText}"></p>
+            <button class="quote-btn" type="submit" name="get-quote" formaction="/motivational">Giv mig motivation</button>
         </div>
 
     <h4> Log ind og upload dit eget </h4>
