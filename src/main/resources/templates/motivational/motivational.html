@@ -6,7 +6,10 @@
 <body>
 
 <div class="page">
-    <header th:replace="~{fragments :: header('Motivational 8-ball')}">
+    <header>
+        <a href="../index.html" th:href="@{/public}">
+            <img alt="logo" src="../../public/images/8ball-logo.png" th:src="@{/images/8ball-logo.png}"/>
+        </a>
     </header>
     <h1>Motivational Quotes</h1>
         <div class="motivation">
