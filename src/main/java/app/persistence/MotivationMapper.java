@@ -25,17 +25,20 @@ public class MotivationMapper {
         try(Connection connection = connectionPool.getConnection()){
             try(PreparedStatement ps = connection.prepareStatement(sql)){
                 ResultSet rs = ps.executeQuery();
-                title = rs.getString("title");
-                text = rs.getString("text");
-                imageURL = rs.getString("image_url");
-                authorId = rs.getInt("author_id");
+                if (rs.next()) {
+                    title = rs.getString("title");
+                    text = rs.getString("text");
+                    imageURL = rs.getString("image_url");
+                    authorId = rs.getInt("author_id");
+                    return new Motivation(authorId,title,text,imageURL);
+                }
             }
         }
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return null;
 
-        return new Motivation(authorId,title,text,imageURL);
     }
 /*
     public static List<Motivation> getMotivations(ConnectionPool connectionPool){
