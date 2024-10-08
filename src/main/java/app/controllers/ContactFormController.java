@@ -33,7 +33,7 @@ public class ContactFormController {
             return;
         }
 
-        ctx.attribute("error", null);
+
         ctx.attribute("success", "Your message has been sent successfully!");
 
         ctx.render("/gruppeg/contact");
