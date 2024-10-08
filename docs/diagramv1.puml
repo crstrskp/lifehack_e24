@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+class Main {
++ public static void main(String args[])
+}
+
+class Motivation {
++ String motivationTitle
++ String motivationText
++ public Motivation(String motivationTitle, String motivationBody)
++ public Motivation(String title, String text, String imageURL)
++ getMotivationName()
++ getMotivationText()
++ getMotivationImageURL()
+
+}
+
+class MotivationMapper {
+- String motivationTitle
+- String motivationText
+- String imageURL
+
++ void newMotivation(String motivationTitle, String motivationText,  String imageURL)
++ void deleteMotivation(String motivationTitle)
+
+}
+class MotivationController {
++ void addRoute()
++ Motivation addMotivation()
++ Motivation showMotivation()
+}
+
+Motivation <|-- Main
+MotivationController *-- MotivationMapper
+MotivationMapper o-- Motivation
+@enduml
