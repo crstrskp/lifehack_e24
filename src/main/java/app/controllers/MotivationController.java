@@ -22,7 +22,7 @@ public class MotivationController {
 
     private static void showMotivation(Context ctx, ConnectionPool pool){
 
-        Motivation quote = MotivationMapper.getMotivation();
+        Motivation quote = MotivationMapper.getMotivation(pool);
         ctx.attribute("motivation", quote);
 
         ctx.render("motivational/motivational.html");
