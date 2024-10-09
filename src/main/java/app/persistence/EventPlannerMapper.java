@@ -33,9 +33,27 @@ public class EventPlannerMapper {
         }
     }
 
+    public static boolean isEventOwner(int eventId, int userId, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "SELECT ownerid FROM eventplanner WHERE eventid = ?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, eventId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("ownerid") == userId;
+            } else {
+                throw new DatabaseException("Event not found");
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Database error", e.getMessage());
+        }
+    }
+
     public static void deleteEvent(int eventId, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "delete from eventplanner where eventid=?";
-
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
