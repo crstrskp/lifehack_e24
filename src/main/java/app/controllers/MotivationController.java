@@ -2,6 +2,7 @@ package app.controllers;
 
 import app.entities.Motivation;
 import app.entities.User;
+import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
 import app.persistence.MotivationMapper;
 import io.javalin.Javalin;
@@ -12,7 +13,7 @@ public class MotivationController {
 
     public static void addRoutes(Javalin app, ConnectionPool pool){
         app.get("/motivational", ctx -> showMotivation(ctx,pool));
-        app.get("/motivation", ctx -> addMotivation(ctx,pool));
+        app.post("/motivation", ctx -> addMotivation(ctx,pool));
 
     }
 
@@ -22,12 +23,18 @@ public class MotivationController {
         String quoteTitel = ctx.formParam("motivational_quote");
         String quoteText = ctx.formParam("motivational_quote");
 
-        User user = ctx.sessionAttribute("currentUser");
-        if(user == null || quoteTitel == null || quoteText == null) {
+        User author = ctx.sessionAttribute("currentUser");
+        if(author == null || quoteTitel == null || quoteText == null) {
             ctx.attribute("message", "Du skal være logget ind");
             ctx.redirect("/motivational");
         }else {
-            MotivationMapper.newMotivation(quoteTitel,quoteText,"", pool);
+            try
+            {
+                MotivationMapper.newMotivation(quoteTitel,quoteText,"",author, pool);
+            } catch (DatabaseException e)
+            {
+                throw new RuntimeException(e);
+            }
             ctx.redirect("/motivational");
         }
 
@@ -36,7 +43,14 @@ public class MotivationController {
 
     private static void showMotivation(Context ctx, ConnectionPool pool){
 
-        Motivation quote = MotivationMapper.getMotivation(pool);
+        Motivation quote = null;
+        try
+        {
+            quote = MotivationMapper.getMotivation(pool);
+        } catch (DatabaseException e)
+        {
+            throw new RuntimeException(e);
+        }
         ctx.attribute("motivation", quote);
 
         ctx.render("/motivational/motivational.html");
