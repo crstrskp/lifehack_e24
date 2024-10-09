@@ -20,6 +20,7 @@
             <h5 class="card-title">Få et tilfældigt citat vist neden for </h5>
             <p class="card-text" th:if="${motivation != null}" th:text="${motivation.motivationText}"></p>
             <button class="btn btn-primary" type="submit" name="get-quote" formaction="/motivational">Giv mig motivation</button>
+            <button th:if="${#ctx.session.currentUser != null}" class="btn btn-primary" type="submit" name="save-to-favorites" formaction="/favorites" th:value="${motivation.motivationId}">Gem denne motivation</button>
             </div>
         </div>
 
