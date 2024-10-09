@@ -2,6 +2,7 @@ package app.controllers;
 
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
+import app.persistence.EventPlannerMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
