@@ -2,6 +2,7 @@ package app;
 
 import app.config.ThymeleafConfig;
 import app.controllers.TimeZonesController;
+import app.controllers.UCController;
 import app.controllers.UserController;
 import app.controllers.WarhammerController;
 import app.persistence.ConnectionPool;
@@ -34,5 +35,6 @@ public class Main
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app);
         WarhammerController.addRoutes(app);
+        UCController.addRoutes(app, connectionPool);
     }
 }
