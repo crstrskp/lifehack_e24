@@ -30,7 +30,6 @@ public class ContactFormController {
             ctx.render("/gruppeg/contact");
         }
 
-        ctx.attribute("error", "An error has occured please try again later.");
         ctx.attribute("success", "Your message has been sent successfully! We'll return to you shortly, " + name);
 
         ctx.render("/gruppeg/contact");
