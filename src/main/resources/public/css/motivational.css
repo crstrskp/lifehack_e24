@@ -124,3 +124,11 @@ h3 {
     padding: 10px;
     font-size: 0.85rem;
 }
+
+.btn-favorite {
+    color: blue;
+}
+
+.btn-favorite:hover {
+    background-color: #2566ac;
+}
