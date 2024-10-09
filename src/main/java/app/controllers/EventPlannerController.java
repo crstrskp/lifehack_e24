@@ -55,7 +55,7 @@ public class EventPlannerController {
 
     public static void leaveEvent(Context ctx, ConnectionPool connectionPool) {
         int eventId = Integer.parseInt(ctx.formParam("eventid"));
-        User currentUser = ctx.sessionAttribute("currentUser");
+        User currentUser = ctx.sessionAttribute("currentuser");
 
         if(currentUser != null) {
             try {
