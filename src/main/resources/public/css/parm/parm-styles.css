@@ -1,0 +1,28 @@
+
+
+html * {
+    box-sizing: border-box;
+}
+
+
+body {
+    display: flex;
+    align-items: center; /* Justerer etiketten og input-feltet lodret */
+}
+
+#weight_id{
+    width: 150px;
+}
+
+
+label {
+    margin-right: 10px; /* Giver lidt afstand mellem etiketten og input-feltet */
+}
+
+.knappen {
+    display: block;
+    margin-top: 40px;
+    width: 200px;
+
+
+}
