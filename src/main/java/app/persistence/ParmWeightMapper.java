@@ -14,6 +14,9 @@ import java.util.Date;
 
 public class ParmWeightMapper {
 
+    public ParmWeightMapper() {
+    }
+
     public static ArrayList<ParmWeightDTO> getAllWeightPerUser(int user_id, ConnectionPool connectionPool) throws DatabaseException {
         ArrayList<ParmWeightDTO> parmWeightDTOs = new ArrayList<>();
         String sql = "select * from public.parmweight where user_id=?";
@@ -39,8 +42,9 @@ public class ParmWeightMapper {
         return parmWeightDTOs;
     }
 
-    public static void addWeight(int user_id, float weight, ConnectionPool connectionPool) throws DatabaseException {
-        String sql ="INSERT INTO public.parmweight (user_id, weight) VALUES (?, ?)";
+    public static Boolean addWeight(int user_id, float weight, ConnectionPool connectionPool) throws DatabaseException {
+        String sql ="INSERT INTO parmweight (user_id, weight) VALUES (?, ?)";
+        boolean result = false;
 
         try(Connection connection = connectionPool.getConnection();
         PreparedStatement ps = connection.prepareStatement(sql)){
@@ -51,11 +55,14 @@ public class ParmWeightMapper {
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1) {
                 throw new DatabaseException("Fejl ved oprettelse af ny vejning");
+            } else{
+                result = true;
             }
 
         } catch(SQLException e) {
             throw new DatabaseException("DB fejl - fejl i at tilføje vægt", e.getMessage());
         }
+        return result;
     }
 
     public static float getAverageWeightPastWeek(int user_id, ConnectionPool connectionPool) throws DatabaseException {
