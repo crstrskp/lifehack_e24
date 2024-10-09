@@ -12,14 +12,14 @@ body {
 
 .weight{
     font-size: 20px;
-    font-family: Georgia;
+    font-family: "Helvetica Neue";
 
 
 }
 #weight_id{
     width: 230px;
     height: 30px;
-    font-family: Georgia;
+    font-family: "Helvetica Neue";
     font-size: 15px;
     text-align: center;
 }
@@ -39,7 +39,7 @@ label {
     outline: none;
     color: white;
     font-size: large;
-    font-family: Georgia;
+    font-family: "Helvetica Neue";
     box-shadow: 0 9px #999;
 }
 
@@ -52,15 +52,13 @@ label {
     transform: translateY(4px);
 }
 
-.weight-table, th{
+.weight-table, th, td{
     margin: auto;
     margin-top: 35px;
     font-size: 20px;
-    font-family: Georgia;
+    font-family: "Helvetica Neue";
     padding-left: 80px;
     padding-right: 80px;
-
-
-
-
+    text-align: center;
 }
+
