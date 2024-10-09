@@ -4,22 +4,61 @@
 <title>ScoopScoreIndex</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../../css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-<link href="../../css/scoopscore.css" th:href="@{/css/scoopscore.css}" rel="stylesheet"/>
+<link rel="stylesheet" href="../../public/css/scoopscore.css">
 </head>
 
 <body>
 
 <div class="page">
   <header>
-    <a href="../index.html" th:href="@{/}">
-      <img class="card-image" alt="logo" src="../../images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
+    <a href="index.html" th:href="@{/}">
+      <img alt="logo" src="../../public/images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
     </a>
   </header>
 
   <h1>ScoopScore</h1>
 
-  <p>Make your splash page here</p>
+  <p>Make your icecreams come true!</p>
+
+  <div class="tier-list">
+    <!-- Tier Rows -->
+    <div class="tier-row" id="s-tier">
+      <div class="tier-label">S</div>
+      <div class="tier-cells"></div>
+    </div>
+
+    <div class="tier-row" id="a-tier">
+      <div class="tier-label">A</div>
+      <div class="tier-cells"></div>
+    </div>
+
+    <div class="tier-row" id="b-tier">
+      <div class="tier-label">B</div>
+      <div class="tier-cells"></div>
+    </div>
+
+    <div class="tier-row" id="c-tier">
+      <div class="tier-label">C</div>
+      <div class="tier-cells"></div>
+    </div>
+
+    <div class="tier-row" id="d-tier">
+      <div class="tier-label">D</div>
+      <div class="tier-cells"></div>
+    </div>
+
+    <div class="tier-row" id="f-tier">
+      <div class="tier-label">F</div>
+      <div class="tier-cells"></div>
+    </div>
+  </div>
+
+  <div class="image-row">
+    <img src="../../public/images/scoopscore/icecream/chocolate.png" alt="Chocolate" class="tier-image">
+    <img src="../../public/images/scoopscore/icecream/cookiedough.png" alt="Cookie dough" class="tier-image">
+    <img src="../../public/images/scoopscore/icecream/strawberry.png" alt="Strawberry" class="tier-image">
+    <img src="../../public/images/scoopscore/icecream/Vanilla.png" alt="Vanilla" class="tier-image">
+  </div>
 </div>
 </body>
 </html>
