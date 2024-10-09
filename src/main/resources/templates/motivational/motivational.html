@@ -23,15 +23,18 @@
             <a th:href="@{/motivational}" href="/motivational.html" class="btn btn-primary">Giv mig motivation</a>
             </div>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
+
 
     <h4> Log ind og upload dit eget </h4>
     <form class="generic-form" method="post">
-        <input type="text" name="username" placeholder="Enter your username"/>
-        <input type="password" name="password" placeholder="Enter your password"/>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter your username" id="username" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Enter your password" id="exampleInputPassword1">
+        </div>
         <button class="btn btn-ok" type="submit" formaction="/login">Login</button>
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
     </form>
