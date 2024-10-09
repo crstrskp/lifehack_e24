@@ -20,7 +20,8 @@ public class EventPlannerController {
     }
 
     private static void createEvent(Context ctx, ConnectionPool connectionPool) {
-        Boolean ownerId = Boolean.valueOf(ctx.formParam("ownerid"));
+       User currentuser = ctx.sessionAttribute("currentuser");
+
         String eventDate = ctx.formParam("eventdateandtime");
         String eventName = ctx.formParam("eventname");
         String eventLocation = ctx.formParam("eventlocation");
@@ -28,7 +29,7 @@ public class EventPlannerController {
 
         if (eventName.length() > 3) {
             try {
-                EventPlannerMapper.createEvent(ownerId, eventDate, eventName, eventLocation, eventDescription, connectionPool);
+                EventPlannerMapper.createEvent(currentuser, eventDate, eventName, eventLocation, eventDescription, connectionPool);
                 ctx.attribute("message", "Event created.");
                 ctx.render("/eventplanner/index.html");
             } catch (DatabaseException e) {
