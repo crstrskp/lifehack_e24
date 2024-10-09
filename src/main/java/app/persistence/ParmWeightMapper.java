@@ -38,4 +38,17 @@ public class ParmWeightMapper {
         }
         return parmWeightDTOs;
     }
+
+    public static void addWeight(ConnectionPool connectionPool) throws DatabaseException {
+        String sql ="INSERT INTO public.parmweight (user_id, weight) VALUES (?, ?)";
+
+        try(Connection connection = connectionPool.getConnection();
+        PreparedStatement ps = connection.prepareStatement(sql)){
+
+            ps.
+
+        } catch(SQLException e) {
+            throw new DatabaseException("DB fejl - fejl i at tilføje vægt", e.getMessage());
+        }
+    }
 }
