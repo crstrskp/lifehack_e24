@@ -70,11 +70,12 @@ public class MotivationMapper {
 
 
     public static Motivation getFavoriteMotivation(User user, ConnectionPool connectionPool){
-       String sql = "SELECT * FROM motivational_favorite AS f INNER JOIN motivational_quotes AS q ON f.motivation_id = q.id WHERE f.user_id = ?";
+       String sql = "SELECT * FROM motivational_favorites AS f INNER JOIN motivational_quotes AS q ON f.quote_id = q.id WHERE f.user_id = ?";
        String title;
        String text;
        String imageURL;
        int motivationId;
+       int authorId;
 
        try (Connection connection = connectionPool.getConnection()){
            try (PreparedStatement ps = connection.prepareStatement(sql)){
@@ -85,7 +86,8 @@ public class MotivationMapper {
                    text = rs.getString("text");
                    imageURL = rs.getString("image_url");
                    motivationId = rs.getInt("id");
-                   return new Motivation(motivationId,title,text,imageURL);
+                   authorId = rs.getInt("author_id");
+                   return new Motivation(motivationId,title,text,imageURL,authorId);
                }
            }
        }
@@ -97,9 +99,9 @@ public class MotivationMapper {
 
     }
 
-    public void addFavorite(User user, int motivationId, ConnectionPool connectionPool) throws DatabaseException
+    public void addToFavorites(User user, int motivationId, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "INSERT INTO motivational_favorite (user_id, motivation_id) VALUES (?, ?)";
+        String sql = "INSERT INTO motivational_favorites (user_id, quote_id) VALUES (?, ?)";
         try (var connection = connectionPool.getConnection())
         {
             try (var prepareStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
@@ -119,7 +121,7 @@ public class MotivationMapper {
 
     public void deleteFromFavorite(int userId, int motivationId, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "DELETE FROM motivational_favorite WHERE user_id = ? AND quote_id = ?";
+        String sql = "DELETE FROM motivational_favorites WHERE user_id = ? AND quote_id = ?";
         try (var connection = connectionPool.getConnection())
         {
             try (var prepareStatement = connection.prepareStatement(sql))
@@ -134,6 +136,7 @@ public class MotivationMapper {
             throw new DatabaseException("Could not delete user from the database");
         }
     }
+
 
 
 /*
