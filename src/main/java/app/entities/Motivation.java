@@ -28,4 +28,9 @@ public class Motivation
     {
         return imageURL;
     }
+
+    public int getMotivationId()
+    {
+        return motivationId;
+    }
 }
