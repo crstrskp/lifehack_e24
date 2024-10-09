@@ -2,7 +2,7 @@ package app.entities;
 
 import java.util.List;
 
-public class Event {
+public class EventPlanner {
     private int eventId;
     private int ownerId;
     private String dateAndTime;
@@ -11,7 +11,7 @@ public class Event {
     private String description;
     private List<User> participants;
 
-    public Event(int eventId, int ownerId, String dateAndTime, String location, String title, String description, List<User> participants) {
+    public EventPlanner(int eventId, int ownerId, String dateAndTime, String location, String title, String description, List<User> participants) {
         this.eventId = eventId;
         this.ownerId = ownerId;
         this.dateAndTime = dateAndTime;
