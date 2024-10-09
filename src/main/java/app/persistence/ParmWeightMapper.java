@@ -1,5 +1,6 @@
 package app.persistence;
 
+import app.entities.ParmWeightDTO;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 
@@ -8,9 +9,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class ParmWeightMapper {
 
-    public static void getAllWeightPerUser(int user_id, ConnectionPool connectionPool) throws DatabaseException {
+    public static ArrayList<ParmWeightDTO> getAllWeightPerUser(int user_id, ConnectionPool connectionPool) throws DatabaseException {
+        ArrayList<ParmWeightDTO> parmWeightDTOs = new ArrayList<>();
         String sql = "select * from public.parmweight where user_id=?";
 
         try (Connection connection = connectionPool.getConnection();
@@ -20,10 +25,17 @@ public class ParmWeightMapper {
 
             ResultSet rs = ps.executeQuery();
            while (rs.next()) {
+               int weightId = rs.getInt("weight_id");
+               int userId = rs.getInt("user_id");
+               float weight = rs.getFloat("weight");
+               Date date = rs.getDate("date");
+
+               parmWeightDTOs.add(new ParmWeightDTO(weightId,userId,weight,date));
 
             }
         } catch (SQLException e) {
             throw new DatabaseException("DB fejl", e.getMessage());
         }
+        return parmWeightDTOs;
     }
 }
