@@ -11,15 +11,31 @@
 <body>
 
 <div class="page">
-  <header>
-    <a href="../index.html" th:href="@{/}">
-      <img class="card-image" alt="logo" src="../../images/lifehacklogo.png" th:src="@{/images/lifehacklogo.png}"/>
-    </a>
-  </header>
+    <header>
+        <a href="../index.html" th:href="@{/}">
+            <img class="card-image" alt="logo" src="../../images/lifehacklogo.png"
+                 th:src="@{/images/lifehacklogo.png}"/>
+        </a>
+    </header>
 
-  <h1>ScoopScore</h1>
+    <h1>ScoopScore</h1>
 
-  <p>Make your splash page here</p>
+    <p>Make your splash page here</p>
+
+    <div class="cards">
+        <div class="card">
+            <img class="card-image" alt="scoopscore" src="../public/images/scoopscore/blank_list.png"
+                 th:src="@{/images/blank_list.png}"/>
+            <div class="card-copy">View/Create my rank list</div>
+            <a class="card-link" href="pages/myranklist.html" th:href="@{/scoopscore/}">My Rank list</a>
+        </div>
+        <div class="card">
+            <img class="card-image" alt="scoopscore" src="../public/images/scoopscorelogo.gif"
+                 th:src="@{/images/scoopscore/scoopscorelogo.gif}"/>
+            <div class="card-copy">View other user's rank lists and vote on them!</div>
+            <a class="card-link" href="pages/allranklists.html" th:href="@{/scoopscore/}">All rank lists</a>
+        </div>
+    </div>
 </div>
 </body>
 </html>
