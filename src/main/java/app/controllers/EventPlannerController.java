@@ -12,6 +12,7 @@ public class EventPlannerController
     {
         app.get("/eventplanner", ctx -> index(ctx, connectionPool));
         app.post("/eventplanner/create", ctx -> createEvent(ctx, connectionPool));
+        app.post("/eventplanner/delete", ctx -> deleteEvent(ctx, connectionPool));
     }
 
     private static void index(Context ctx, ConnectionPool connectionPool)

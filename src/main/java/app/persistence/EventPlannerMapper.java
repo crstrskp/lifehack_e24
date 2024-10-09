@@ -41,4 +41,27 @@ public class EventPlannerMapper {
                 throw new DatabaseException(msg, e.getMessage());
             }
         }
+
+        public static void deleteEvent(int eventId, ConnectionPool connectionPool) throws DatabaseException
+        {
+            String sql = "delete from eventplanner where eventid=?";
+
+            try (
+                    Connection connection = connectionPool.getConnection();
+                    PreparedStatement ps = connection.prepareStatement(sql)
+            )
+            {
+                ps.setInt(1, eventId);
+
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected != 1)
+                {
+                    throw new DatabaseException("Fejl ved sletning af event");
+                }
+            }
+            catch (SQLException e)
+            {
+                throw new DatabaseException("Der er sket en fejl. Prøv igen", e.getMessage());
+            }
+        }
     }
