@@ -21,15 +21,17 @@
 
     <h1>Event Planner</h1>
 
-    <p>Make your splash page here</p>
-
-    <div class="card w-800 mb-3">
+    <div class="card d-flex" style="min-width: fit-content">
         <div class="card-body">
             <h5 class="card-title">17/10 17:00</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">Brætspil</h6>
-            <p class="card-text">Vi spiller brætspil på skolen - kom og vær med</p>
-            <a href="#" class="card-link btn btn-success">Deltag</a>
-            <a href="#" class="card-link btn btn-success">Delete</a>
+            <p class="card-text">Vi spiller brætspil på skolen - kom og vær med jjoaklhjdlksahldsahdljk s sad asd a asda sdad a ada asd asd asd asda da asd ad asfd asd asd </p>
+            <div class="d-flex justify-content-evenly mb-3 gap-1" role="group" aria-label="Basic example">
+                <button type="button" class="p-2 btn btn-success">Join</button>
+                <button type="button" class="p-2 btn btn-secondary">Edit</button>
+                <button type="button" class="p-2 btn btn-danger">Delete</button>
+                <button type="button" class="ms-auto p-2 btn btn-danger">Leave</button>
+            </div>
         </div>
     </div>
 
@@ -37,9 +39,8 @@
 </div>
 </body>
 <footer>
-    <div>
-        <button type="submit" class="btn btn-success" style="width: max(35vw)" formaction="/create">Create Event
-        </button>
+    <div class="mt-4" th:if="${session.currentUser != null}">
+        <a href="createevent.html" th:ref="@{/createevent}" class="btn btn-success" style="width: max(35vw)">Create Event</a>
     </div>
 </footer>
 </html>
