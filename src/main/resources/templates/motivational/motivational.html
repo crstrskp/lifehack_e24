@@ -19,7 +19,7 @@
             <div class="card-body">
             <h5 class="card-title">Få et tilfældigt citat vist neden for </h5>
             <p class="card-text" th:if="${motivation != null}" th:text="${motivation.motivationText}"></p>
-            <button class="btn btn-primary" type="submit" name="get-quote" formaction="/motivational">Giv mig motivation</button>
+            <a th:href="@{/motivational}" href="/motivational.html" class="btn btn-primary">Giv mig motivation</a>
             </div>
         </div>
 

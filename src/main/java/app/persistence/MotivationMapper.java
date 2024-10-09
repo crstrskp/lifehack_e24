@@ -5,6 +5,7 @@ import app.entities.User;
 import app.exceptions.DatabaseException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MotivationMapper {
@@ -66,6 +67,8 @@ public class MotivationMapper {
         return null;
 
     }
+
+
 /*
     public static List<Motivation> getMotivations(ConnectionPool connectionPool){
 
