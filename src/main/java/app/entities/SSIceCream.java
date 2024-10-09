@@ -34,7 +34,10 @@ public class SSIceCream {
     public String toString() {
         return "SSIceCream{" +
                 "id=" + id +
+                ", brandId=" + brandId +
                 ", name='" + name + '\'' +
+                ", discription='" + discription + '\'' +
                 '}';
     }
+
 }
