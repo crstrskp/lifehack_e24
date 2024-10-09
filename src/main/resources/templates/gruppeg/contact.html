@@ -24,7 +24,7 @@
 
     <div class="success" th:if="${success}" th:text="${success}"></div>
 
-    <form th:action="@{/gruppeg/contact}" method="post">
+    <form action="mailto:lifehacktest0@gmail.com" method="post" enctype="text/plain">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
 
