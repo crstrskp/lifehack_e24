@@ -99,7 +99,7 @@ public class MotivationMapper {
 
     }
 
-    public void addToFavorites(User user, int motivationId, ConnectionPool connectionPool) throws DatabaseException
+    public static void addToFavorites(User user, int motivationId, ConnectionPool connectionPool) throws DatabaseException
     {
         String sql = "INSERT INTO motivational_favorites (user_id, quote_id) VALUES (?, ?)";
         try (var connection = connectionPool.getConnection())
@@ -119,7 +119,7 @@ public class MotivationMapper {
         }
     }
 
-    public void deleteFromFavorite(int userId, int motivationId, ConnectionPool connectionPool) throws DatabaseException
+    public static void deleteFromFavorite(int userId, int motivationId, ConnectionPool connectionPool) throws DatabaseException
     {
         String sql = "DELETE FROM motivational_favorites WHERE user_id = ? AND quote_id = ?";
         try (var connection = connectionPool.getConnection())
