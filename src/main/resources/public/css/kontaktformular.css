@@ -6,6 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 
@@ -78,11 +79,19 @@ body {
     font-size: 14px;
 }
 img {
-    margin: 50px; /* Moves the image up by 20 pixels */
+    margin: 50px;
 }
-body {
-    background-image: url("../../public/images/4k_wallpaper___warhammer_40_000___fan_art_by_aimages_dgm62an-fullview.jpg ");
-    background-size: cover; /* Makes the image cover the entire background */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../images/warhammer.jpg");
+    background-position: center;
+    background-size: cover;
+    filter: blur(6px);
+    z-index: -1;
+
 }

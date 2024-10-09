@@ -7,17 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
     <link href="../../public/css/kontaktformular.css" th:href="@{/css/kontaktformular.css}" rel="stylesheet"/>
-    <img src="../../public/images/kontaktformlogo.png" height="230" width="230"/>
-
-
+</head>
 
 <body>
 
+
+<img alt="logo" src="/public/images/kontaktformlogo.png" th:src="@{/images/kontaktformlogo.png}" th:height="200" th:width="200"/>
+
+<div class="background"></div>
+
 <div class="contact-form">
+
     <h2>Contact Us</h2>
 
-    <!-- Display errors or success messages dynamically -->
     <div class="error" th:if="${error}" th:text="${error}"></div>
+
     <div class="success" th:if="${success}" th:text="${success}"></div>
 
     <form th:action="@{/gruppeg/contact}" method="post">
