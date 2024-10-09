@@ -4,6 +4,13 @@ html * {
     box-sizing: border-box;
 }
 
+h1{
+    font-size: 20px;
+    font-family: "Helvetica Neue";
+    text-align: center;
+    margin-bottom: 5px;
+}
+
 body {
     display: flex;
     align-items: center;
@@ -12,7 +19,6 @@ body {
 .weight{
     font-size: 20px;
     font-family: "Helvetica Neue";
-
 
 }
 #weight_id{

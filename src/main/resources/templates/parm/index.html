@@ -4,8 +4,9 @@
 <title>Weight watch</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../public/css/parm/parm-styles.css" th:href="@{/css/parm/parm-styles.css}" rel="stylesheet"/>
 <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-<link href="../../public/css/parm/parm-styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -17,9 +18,7 @@
         </a>
     </header>
 
-<!--    <h1>Welcome to weight watch, <span th:text="${session.currentUser.username}"></span></h1>-->
-
-
+    <span th:text="${session.currentUser.username}"></span>
     <form class="weight" method="post">
         <label for="weight_id">Current weight:</label>
         <input type="text" id="weight_id" name="weight" placeholder="Enter your current weight here!"/>
@@ -40,21 +39,9 @@
         </thead>
         <tbody>
         <tr>
-<!--        <tr th:each="weight: ${weightList}">-->
-<!--            <td th:datetime="${weight.date}"></td>-->
+          <tr th:each="weight: ${weightList}">
+                <td th:text="${specificDate}"></td>
 
-            <td>2024-10-09</td>
-            <td>87</td>
-        </tr>
-
-        <tr>
-            <td>2024-10-08</td>
-            <td>86</td>
-        </tr>
-
-        <tr>
-            <td>2024-10-07</td>
-            <td>86,5</td>
         </tr>
         </tbody>
     </table>
