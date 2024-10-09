@@ -13,6 +13,7 @@ public class EventPlannerController {
         app.post("/eventplanner/create", ctx -> createEvent(ctx, connectionPool));
         app.post("/eventplanner/delete", ctx -> deleteEvent(ctx, connectionPool));
         app.post("/eventplanner/leave", ctx -> leaveEvent(ctx, connectionPool));
+        app.post("/eventplanner/join", ctx -> joinEvent(ctx, connectionPool));
     }
 
     private static void index(Context ctx, ConnectionPool connectionPool) {
@@ -88,7 +89,7 @@ public class EventPlannerController {
             }
         } else {
 
-            ctx.attribute("message", "Du skal være logget ind for at joine et event.");
+            ctx.attribute("message", "You must be logged in to join an event.");
             ctx.render("/eventplanner/index.html");
         }
     }
