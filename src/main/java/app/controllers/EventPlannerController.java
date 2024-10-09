@@ -46,4 +46,16 @@ public class EventPlannerController
         }
     }
 
+    public static void deleteEvent (Context ctx, ConnectionPool connectionPool){
+        int eventId = Integer.parseInt(ctx.formParam("eventid"));
+        try {
+            EventPlannerMapper.deleteEvent(eventId, connectionPool);
+            ctx.attribute("message", "Event deleted.");
+            ctx.render("/eventplanner/index.html");
+        } catch (DatabaseException e) {
+            ctx.attribute("message", "Something went wrong, Try again");
+            ctx.render("/eventplanner/index.html");
+        }
+    }
+
 }
