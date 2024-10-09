@@ -24,7 +24,7 @@ public class RankListMapper
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-                
+                int id = rs.getInt()
             }
 
         }
