@@ -39,13 +39,19 @@ public class ParmWeightMapper {
         return parmWeightDTOs;
     }
 
-    public static void addWeight(ConnectionPool connectionPool) throws DatabaseException {
+    public static void addWeight(int user_id, float weight, ConnectionPool connectionPool) throws DatabaseException {
         String sql ="INSERT INTO public.parmweight (user_id, weight) VALUES (?, ?)";
 
         try(Connection connection = connectionPool.getConnection();
         PreparedStatement ps = connection.prepareStatement(sql)){
 
-            ps.
+            ps.setInt(1, user_id);
+            ps.setFloat(2, weight);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1) {
+                throw new DatabaseException("Fejl ved oprettelse af ny vejning");
+            }
 
         } catch(SQLException e) {
             throw new DatabaseException("DB fejl - fejl i at tilføje vægt", e.getMessage());
