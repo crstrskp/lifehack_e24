@@ -19,46 +19,19 @@
 
     <h1>ScoopScore</h1>
 
-  <p>Make your icecreams come true!</p>
-
-  <div class="tier-list">
-    <!-- Tier Rows -->
-    <div class="tier-row" id="s-tier">
-      <div class="tier-label">S</div>
-      <div class="tier-cells"></div>
+  <div class="cards">
+    <div class="card">
+      <img class="card-image" alt="scoopscore" src="../public/images/blank_list.png"
+           th:src="@{/images/scoopscore/blank_list.png}"/>
+      <div class="card-copy">View/Create my rank list</div>
+      <a class="card-link" href="pages/myranklist.html">My Rank list</a>
     </div>
-
-    <div class="tier-row" id="a-tier">
-      <div class="tier-label">A</div>
-      <div class="tier-cells"></div>
+    <div class="card">
+      <img class="card-image" alt="scoopscore" src="../public/images/all_lists.png"
+           th:src="@{/images/scoopscore/all_lists.png}"/>
+      <div class="card-copy">View other user's rank lists and vote on them!</div>
+      <a class="card-link" href="pages/allranklists.html">All rank lists</a>
     </div>
-
-    <div class="tier-row" id="b-tier">
-      <div class="tier-label">B</div>
-      <div class="tier-cells"></div>
-    </div>
-
-    <div class="tier-row" id="c-tier">
-      <div class="tier-label">C</div>
-      <div class="tier-cells"></div>
-    </div>
-
-    <div class="tier-row" id="d-tier">
-      <div class="tier-label">D</div>
-      <div class="tier-cells"></div>
-    </div>
-
-    <div class="tier-row" id="f-tier">
-      <div class="tier-label">F</div>
-      <div class="tier-cells"></div>
-    </div>
-  </div>
-
-  <div class="image-row">
-    <img src="../../images/scoopscore/icecream/chocolate.png" alt="Chocolate" class="tier-image">
-    <img src="../../images/scoopscore/icecream/cookiedough.png" alt="Cookie dough" class="tier-image">
-    <img src="../../images/scoopscore/icecream/strawberry.png" alt="Strawberry" class="tier-image">
-    <img src="../../images/scoopscore/icecream/vanilla.png" alt="Vanilla" class="tier-image">
   </div>
 </div>
 </body>
