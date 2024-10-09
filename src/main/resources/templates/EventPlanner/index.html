@@ -40,7 +40,7 @@
 </body>
 <footer>
     <div class="mt-4" th:if="${session.currentUser != null}">
-        <button type="submit" class="btn btn-success" style="width: max(35vw)" formaction="/create">Create Event</button>
+        <a href="createevent.html" th:ref="@{/createevent}" class="btn btn-success" style="width: max(35vw)">Create Event</a>
     </div>
 </footer>
 </html>
