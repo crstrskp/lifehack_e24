@@ -132,3 +132,13 @@ h3 {
 .btn-favorite:hover {
     background-color: #2566ac;
 }
+
+.motivation {
+    background-color: lightskyblue;
+}
+
+.btn {
+    background-color: lightblue;
+    color: white;
+
+}
