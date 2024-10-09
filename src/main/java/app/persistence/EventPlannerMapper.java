@@ -72,4 +72,23 @@ public class EventPlannerMapper {
             throw new DatabaseException("Der er sket en fejl. Prøv igen", e.getMessage());
         }
     }
+    public static void joinEvent (int eventId, User user, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "delete from eventplanner where eventid=? and userid=?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, eventId);
+            ps.setInt(2, user.getUserId());
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1) {
+                throw new DatabaseException("Fejl ved at joine event");
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Der er sket en fejl. Prøv igen", e.getMessage());
+        }
+    }
+
 }

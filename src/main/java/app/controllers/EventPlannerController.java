@@ -71,5 +71,26 @@ public class EventPlannerController {
             ctx.render("/eventplanner/index.html");
         }
     }
+    public static void joinEvent(Context ctx, ConnectionPool connectionPool) {
+
+        User currentUser = ctx.sessionAttribute("currentUser");
+        int eventId = Integer.parseInt(ctx.formParam("eventid"));
+
+        if (currentUser != null) {
+
+            try {
+                EventPlannerMapper.joinEvent(eventId, currentUser, connectionPool);
+                ctx.attribute("message", "Event joined.");
+                ctx.render("/eventplanner/index.html");
+            } catch (DatabaseException e) {
+                ctx.attribute("message", "Something went wrong, try again.");
+                ctx.render("/eventplanner/index.html");
+            }
+        } else {
+
+            ctx.attribute("message", "Du skal være logget ind for at joine et event.");
+            ctx.render("/eventplanner/index.html");
+        }
+    }
 
 }

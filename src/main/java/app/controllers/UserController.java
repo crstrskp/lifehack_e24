@@ -15,6 +15,7 @@ public class UserController
         app.get("logout", ctx -> logout(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> createUser(ctx, connectionPool));
+        app.post("joinevent", ctx -> createUser(ctx, connectionPool));
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool)
