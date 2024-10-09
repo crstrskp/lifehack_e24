@@ -27,24 +27,24 @@
 
         <div class="knappen">
 
-        <button type="submit" th:formaction="@{/parm/}">Submit</button>
+        <button id="knap" type="submit" th:formaction="@{/parm/}">Submit</button>
         </div>
 
     </form>
 
-<!--    <table class="weight-table">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>Date</th>-->
-<!--            <th>Weight</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="weight: ${weightList}">-->
-<!--            <td th:datetime="${weight.date}"></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
+    <table class="weight-table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Weight</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="weight: ${weightList}">
+            <td th:datetime="${weight.date}"></td>
+        </tr>
+        </tbody>
+    </table>
 
 
 </div>
