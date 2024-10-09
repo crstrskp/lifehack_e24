@@ -14,25 +14,33 @@ public class ContactFormController {
         String name = ctx.formParam("name");
         String email = ctx.formParam("email");
         String message = ctx.formParam("message");
+        boolean key= true;
 
         if (name == null || name.isEmpty()) {
             ctx.attribute("error", "Name is required.");
             ctx.render("/gruppeg/contact");
+            key=false;
         }
 
         if (email == null || email.isEmpty()) {
             ctx.attribute("error", "Email is required.");
             ctx.render("/gruppeg/contact");
+            key=false;
         }
 
         if (message == null || message.length() < 20 || message.length() > 250) {
             ctx.attribute("error", "Message must be between 20 and 250 characters.");
             ctx.render("/gruppeg/contact");
+            key=false;
+        }
+        if (key) {
+            ctx.attribute("success", "Your message has been sent successfully! We'll return to you shortly, " + name);
+
+            ctx.render("/gruppeg/contact");
+
+
         }
 
-        ctx.attribute("success", "Your message has been sent successfully! We'll return to you shortly, " + name);
-
-        ctx.render("/gruppeg/contact");
 
     }
 }
