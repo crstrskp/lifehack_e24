@@ -47,7 +47,13 @@ public class MotivationController {
         int favoriteId = Integer.parseInt(favoriteInput);
 
         User user = ctx.sessionAttribute("currentUser");
-        MotivationMapper.addToFavorites(user, favoriteId, connectionPool);
+        try
+        {
+            MotivationMapper.addToFavorites(user, favoriteId, connectionPool);
+        } catch (DatabaseException e)
+        {
+            throw new RuntimeException(e);
+        }
         String msg = "Dit citat er tilføjet til din favoritter";
 
         ctx.attribute("motivation", msg);
