@@ -22,7 +22,7 @@ package entities {
 }
 package persistance {
     class MotivationMapper {
-    + void newMotivation(String motivationTitle, String motivationText,  String imageURL, Conection pool)
+    + void newMotivation(String motivationTitle, String motivationText,  String imageURL, User user, Conection pool)
     + void deleteMotivation(int motivationId)
     + Motivation getMotivation()
     + List<Motivation> getMotivations()

@@ -1,20 +1,22 @@
 package app.persistence;
 
 import app.entities.Motivation;
+import app.entities.User;
 
 import java.sql.*;
 import java.util.List;
 
 public class MotivationMapper {
 
-    public static void newMotivation(String motivationTitle, String motivationText, String imageURL, ConnectionPool connectionPool) throws SQLException {
-        String sql = "INSERT INTO motivational_quotes (title, text, image_url) VALUES (?,?,?)";
+    public static void newMotivation(String motivationTitle, String motivationText, String imageURL, User user, ConnectionPool connectionPool) throws SQLException {
+        String sql = "INSERT INTO motivational_quotes (title, text, image_url, author_id) VALUES (?,?,?)";
 
         try(Connection connection = connectionPool.getConnection()){
             try(PreparedStatement ps = connection.prepareStatement(sql)){
                 ps.setString(1, motivationTitle);
                 ps.setString(2, motivationText);
                 ps.setString(3, imageURL);
+                ps.setInt(4, user.getUserId());
 
                 int rowsAffected = ps.executeUpdate();
 
