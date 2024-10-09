@@ -15,7 +15,7 @@ public class Main
 
     private static final String USER = "postgres";
     private static final String PASSWORD = "postgres";
-    private static final String URL = "jdbc:postgresql://localhost:5432/%s?currentSchema=public";
+    private static final String URL = "jdbc:postgresql://localhost:5433/%s?currentSchema=public"; //changed port from 5432 to 5433 to get it working on my system, should be 5432 on everyone else's
     private static final String DB = "lifehack";
 
     private static final ConnectionPool connectionPool = ConnectionPool.getInstance(USER, PASSWORD, URL, DB);
