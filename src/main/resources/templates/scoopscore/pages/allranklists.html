@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>All Rank Lists</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Correct paths to CSS files using relative paths -->
+    <link href="../../../css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="page">
     <header>
-        <a href="../../index.html" th:href="@{/}">
-            <img alt="logo" src="../../../images/lifehacklogo.png"/>
+        <a href="/" th:href="@{/}">
+            <img class="card-image" alt="logo" src="../../../images/lifehacklogo.png"
+                 th:src="@{/images/lifehacklogo.png}"/>
         </a>
     </header>
     <p>All rank list goes here</p>
