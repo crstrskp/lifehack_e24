@@ -1,4 +1,4 @@
-package app.entities;
+package app.entities.SS;
 
 public class SSIceCream {
 
