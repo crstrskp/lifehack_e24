@@ -2,6 +2,8 @@
 
 -- DROP TABLE IF EXISTS public.eventplanner;
 
+CREATE SEQUENCE IF NOT EXISTS eventplanner_event_id_seq;
+
 CREATE TABLE IF NOT EXISTS public.eventplanner
 (
     event_id integer NOT NULL DEFAULT nextval('eventplanner_event_id_seq'::regclass),
@@ -14,16 +16,16 @@ CREATE TABLE IF NOT EXISTS public.eventplanner
     owner_id integer,
     CONSTRAINT eventplanner_pkey PRIMARY KEY (event_id),
     CONSTRAINT owner_id FOREIGN KEY (owner_id)
-        REFERENCES public.users (user_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-        NOT VALID,
+    REFERENCES public.users (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID,
     CONSTRAINT participants FOREIGN KEY (participants)
-        REFERENCES public.users (user_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-        NOT VALID
-)
+    REFERENCES public.users (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID
+    )
 
     TABLESPACE pg_default;
 
@@ -35,5 +37,5 @@ ALTER TABLE IF EXISTS public.eventplanner
 
 CREATE INDEX IF NOT EXISTS fki_participants
     ON public.eventplanner USING btree
-        (participants ASC NULLS LAST)
+    (participants ASC NULLS LAST)
     TABLESPACE pg_default;
