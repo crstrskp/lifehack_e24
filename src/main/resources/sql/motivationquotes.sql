@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS public.motivational_quotes
 
 ALTER TABLE IF EXISTS public.motivational_quotes
     ADD CONSTRAINT fk_author_id FOREIGN KEY (author_id)
-    REFERENCES public.users (user_id) MATCH SIMPLE
+    REFERENCES users (user_id) MATCH SIMPLE
     ON UPDATE NO ACTION
        ON DELETE NO ACTION
     NOT VALID;
