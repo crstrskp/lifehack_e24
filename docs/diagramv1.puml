@@ -6,24 +6,27 @@ class Main {
 }
 package entities {
     class Motivation {
-    + String motivationTitle
-    + String motivationText
-    + String imageURL
+    - String motivationTitle
+    - String motivationText
+    - String imageURL
     - int motivationId
+    - int authotId
     + public Motivation(String motivationTitle, String motivationBody)
     + public Motivation(String title, String text, String imageURL)
     + getMotivationName()
     + getMotivationText()
     + getMotivationImageURL()
-
+    + getMotivationId()
+    + getAuthorId()
     }
 }
 package persistance {
     class MotivationMapper {
-    + void newMotivation(String motivationTitle, String motivationText,  String imageURL)
+    + void newMotivation(String motivationTitle, String motivationText,  String imageURL, Conection pool)
     + void deleteMotivation(int motivationId)
     + Motivation getMotivation()
     + List<Motivation> getMotivations()
+
     }
 }
 package controllers {

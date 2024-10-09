@@ -8,7 +8,7 @@ import java.util.List;
 public class MotivationMapper {
 
     public static void newMotivation(String motivationTitle, String motivationText, String imageURL, ConnectionPool connectionPool) throws SQLException {
-        String sql = "INSERT INTO motivational_quotes (title, motivationText, imageURL) VALUES (?,?,?)";
+        String sql = "INSERT INTO motivational_quotes (title, text, image_url) VALUES (?,?,?)";
 
         try(Connection connection = connectionPool.getConnection()){
             try(PreparedStatement ps = connection.prepareStatement(sql)){
@@ -38,16 +38,18 @@ public class MotivationMapper {
         String text;
         String imageURL;
         int authorId;
+        int motivationId;
 
         try(Connection connection = connectionPool.getConnection()){
             try(PreparedStatement ps = connection.prepareStatement(sql)){
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
+                    motivationId = rs.getInt("id");
                     title = rs.getString("title");
                     text = rs.getString("text");
                     imageURL = rs.getString("image_url");
                     authorId = rs.getInt("author_id");
-                    return new Motivation(authorId,title,text,imageURL);
+                    return new Motivation(motivationId,title,text,imageURL, authorId);
                 }
             }
         }

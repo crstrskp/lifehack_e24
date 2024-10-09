@@ -6,13 +6,15 @@ public class Motivation
     private String  motivationText;
     private String  imageURL;
     private int motivationId;
+    private int authorId;
 
-    public Motivation(int motivationId, String motivationTitle, String motivationText, String imageURL)
+    public Motivation(int motivationId, String motivationTitle, String motivationText, String imageURL, int authorId)
     {
         this.motivationId = motivationId;
         this.motivationTitle = motivationTitle;
         this.motivationText = motivationText;
         this.imageURL = imageURL;
+        this.authorId = authorId;
     }
     public String getMotivationTitle()
     {
@@ -27,5 +29,10 @@ public class Motivation
     public String getImageURL()
     {
         return imageURL;
+    }
+
+    public int getAuthorId()
+    {
+        return authorId;
     }
 }
