@@ -13,7 +13,7 @@ public class IceCreamMapper
 {
 
 
-    public static List<SSIceCream> IceCreamMapper(ConnectionPool connectionPool) throws DatabaseException
+    public static List<SSIceCream> iceCreamMapper(ConnectionPool connectionPool) throws DatabaseException
     {
 
         List<SSIceCream> iceCreamList = new ArrayList<>();
