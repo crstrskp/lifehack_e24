@@ -20,8 +20,7 @@ public class EventPlannerController {
     }
 
     private static void createEvent(Context ctx, ConnectionPool connectionPool) {
-       User currentuser = ctx.sessionAttribute("currentuser");
-
+        User currentuser = ctx.sessionAttribute("currentuser");
         String eventDate = ctx.formParam("eventdateandtime");
         String eventName = ctx.formParam("eventname");
         String eventLocation = ctx.formParam("eventlocation");
@@ -43,22 +42,32 @@ public class EventPlannerController {
     }
 
     public static void deleteEvent(Context ctx, ConnectionPool connectionPool) {
+        User currentUser = ctx.sessionAttribute("currentuser");
         int eventId = Integer.parseInt(ctx.formParam("eventid"));
-        try {
-            EventPlannerMapper.deleteEvent(eventId, connectionPool);
-            ctx.attribute("message", "Event deleted.");
-            ctx.render("/eventplanner/index.html");
-        } catch (DatabaseException e) {
-            ctx.attribute("message", "Something went wrong, Try again");
-            ctx.render("/eventplanner/index.html");
+
+        if (currentUser != null) {
+            try {
+                boolean isOwner = EventPlannerMapper.isEventOwner(eventId, currentUser.getUserId(), connectionPool);
+                if (isOwner) {
+                    EventPlannerMapper.deleteEvent(eventId, connectionPool);
+                    ctx.attribute("message", "Event deleted.");
+                } else {
+                    ctx.attribute("message", "You are not the owner of this event.");
+                }
+            } catch (DatabaseException e) {
+                ctx.attribute("message", "Something went wrong, try again.");
+            }
+        } else {
+            ctx.attribute("message", "You must be logged in to delete an event.");
         }
+        ctx.render("/eventplanner/index.html");
     }
 
     public static void leaveEvent(Context ctx, ConnectionPool connectionPool) {
         int eventId = Integer.parseInt(ctx.formParam("eventid"));
         User currentUser = ctx.sessionAttribute("currentuser");
 
-        if(currentUser != null) {
+        if (currentUser != null) {
             try {
                 EventPlannerMapper.leaveEvent(eventId, currentUser, connectionPool);
                 ctx.attribute("message", "You have left the event.");
@@ -72,6 +81,7 @@ public class EventPlannerController {
             ctx.render("/eventplanner/index.html");
         }
     }
+
     public static void joinEvent(Context ctx, ConnectionPool connectionPool) {
 
         User currentUser = ctx.sessionAttribute("currentUser");

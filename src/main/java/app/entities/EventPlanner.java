@@ -4,16 +4,18 @@ import java.util.List;
 
 public class EventPlanner {
     private int eventId;
-    private boolean ownerId;
+    private int ownerId;
+    private boolean isOwner;
     private String dateAndTime;
     private String location;
     private String title;
     private String description;
     private List<User> participants;
 
-    public EventPlanner(int eventId, boolean ownerId, String dateAndTime, String location, String title, String description, List<User> participants) {
+    public EventPlanner(int eventId, int ownerId, boolean isOwner, String dateAndTime, String location, String title, String description, List<User> participants) {
         this.eventId = eventId;
         this.ownerId = ownerId;
+        this.isOwner = isOwner;
         this.dateAndTime = dateAndTime;
         this.location = location;
         this.title = title;
@@ -29,8 +31,12 @@ public class EventPlanner {
         return participants;
     }
 
-    public boolean getOwnerId() {
+    public int getOwnerId() {
         return ownerId;
+    }
+
+    public boolean isOwner() {
+        return isOwner;
     }
 
     public String getLocation() {
