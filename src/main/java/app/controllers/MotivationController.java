@@ -43,8 +43,8 @@ public class MotivationController {
 
     private static void addToFavorites(Context ctx, ConnectionPool connectionPool)
     {
-        String f = ctx.formParam("favorite-id");
-        int favoriteId = Integer.parseInt(f);
+        String favoriteInput = ctx.formParam("favorite-id");
+        int favoriteId = Integer.parseInt(favoriteInput);
 
         User user = ctx.sessionAttribute("currentUser");
         MotivationMapper.addToFavorites(user, favoriteId, connectionPool);
