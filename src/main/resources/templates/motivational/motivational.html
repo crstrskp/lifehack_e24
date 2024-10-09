@@ -21,7 +21,11 @@
             <h5 class="card-title">Få et tilfældigt citat vist neden for</h5>
             <p class="card-text" th:if="${motivation != null}" th:text="${motivation.motivationText}"></p>
             <a th:href="@{/motivational}" href="/motivational.html" class="btn btn-primary m-3">Giv mig motivation</a>
-            <button th:if="${#ctx.session.currentUser != null}" class="btn btn-primary" type="submit" name="favorites-id" formaction="/favorites" value="${motivation.motivationId}">Gem denne motivation</button>
+
+            <form method="post" th:action="@{/motivational/addtofavorites}">
+                <input type="hidden" name="favorite-id" th:value="${motivation.motivationId}">
+                <button th:if="${#ctx.session.currentUser != null}" class="btn btn-primary" type="submit">Gem denne motivation</button>
+            </form>
             </div>
         </div>
 
