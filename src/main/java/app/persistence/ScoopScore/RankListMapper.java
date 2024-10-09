@@ -21,7 +21,11 @@ public class RankListMapper
                 )
         {
             ps.setBoolean(1, is_public);
-            ResultSet rs = ps.executeQuery()
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                
+            }
 
         }
     }
