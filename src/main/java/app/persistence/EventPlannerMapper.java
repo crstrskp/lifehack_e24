@@ -3,21 +3,18 @@ package app.persistence;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class EventPlannerMapper {
 
-    public static void createEvent(Boolean ownerId, String dateAndTime, String location, String title, String decription, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "insert into eventplanner (ownerid, dateandtime, location, title, decription) values (true, ?,?,?,?)";
+    public static void createEvent(User owner, String dateAndTime, String location, String title, String decription, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "insert into eventplanner (ownerid, dateandtime, location, title, decription, is_owner) values (?,?,?,?,?,true)";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
         ) {
-            ps.setBoolean(1, ownerId);
+            ps.setInt(1, owner.getUserId());
             ps.setString(2, dateAndTime);
             ps.setString(3, location);
             ps.setString(4, title);
