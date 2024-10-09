@@ -28,7 +28,7 @@ public class RankListMapper
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-                List<RankListItem> rankListItemPerUser = new ArrayList<>();
+                ArrayList<RankListItem> rankListItemPerUser = new ArrayList<>();
                 int id = rs.getInt("id");
                 int user_id = rs.getInt("user_id");
                 String title = rs.getString("title");
@@ -36,7 +36,7 @@ public class RankListMapper
                 boolean is_public = rs.getBoolean("is_public");
                 //TODO getRankListItems from user_id
 //                rankListItemPerUser = RankListItemMapper.getRankListItems();
-                rankLists.add(new RankList(id, user_id, title, description, is_public));
+                rankLists.add(new RankList(id, user_id, title, description, is_public, rankListItemPerUser));
             }
         }
         catch (SQLException e)
