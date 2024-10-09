@@ -34,7 +34,7 @@ public class ContactFormController {
         }
 
         ctx.attribute("error", null);
-        ctx.attribute("success", "Your message has been sent successfully!");
+        ctx.attribute("success", "Your message has been sent successfully! We'll return to you shortly, " + name);
 
         ctx.render("/gruppeg/contact");
 
