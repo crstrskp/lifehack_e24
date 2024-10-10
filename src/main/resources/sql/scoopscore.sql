@@ -112,7 +112,8 @@ CREATE TABLE public.ss_vote (
                                         REFERENCES public.users(user_id) ON DELETE CASCADE
 );
 INSERT INTO public.ss_brand (name)
-VALUES ('Premier'),
+VALUES ('Ben & Jerrys'),
+       ('Premier'),
        ('Frisko'),
        ('Gudhjemis'),
        ('Naturli'),
@@ -122,15 +123,20 @@ VALUES ('Premier'),
 INSERT INTO public.ss_ice_cream (name,brand_id,description)
 VALUES ('Caramel Brownie Party',1,'The best icecream on the market - it is a caramel ice cream with caramel sauce swirls and gooey brownies chunks. It is addictive! - Absolutely S-tier'),
        ('Cookie Dough Swich Up',1,'Vanilla icecream with cocoacookies, pieces of cookie dough with chocolate pieces, and swirl of cocoacookies'),
-       ('Skildpaddeis', 3,'Rum flavoured icecream with 16% caramelsauce and 10% chokolatepieces. Absolutely S-tier. Try it with bananas!'),
-       ('Lemon sorbet',5,'Lemon flavoured sorbet icecream - Recommended by Christoffer'),
-       ('Cookie dough deluxe',6,'Vegan vanilla icecream with chocolate chip cookie dough chunks and chocolate pieces. - Good vegan alternative to Rema1000s or Ben & Jerrys'),
-       ('Tricolore is',8,'Stabil regnbue is - isen som alle kender fra deres barndom'),
-       ('Oreo', 4,'Vanilla icecream with crushed oreocookies'),
-       ('Guldhorn',3,'Crunchy waffel filled with vannila'),
+       ('Skildpaddeis', 2,'Rum flavoured icecream with 16% caramelsauce and 10% chokolatepieces. Absolutely S-tier. Try it with bananas!'),
+       ('Lemon sorbet',4,'Lemon flavoured sorbet icecream - Recommended by Christoffer'),
+       ('Cookie dough deluxe',5,'Vegan vanilla icecream with chocolate chip cookie dough chunks and chocolate pieces. - Good vegan alternative to Rema1000s or Ben & Jerrys'),
+       ('Tricolore is',7,'Stabil regnbue is - isen som alle kender fra deres barndom'),
+       ('Oreo', 3,'Vanilla icecream with crushed oreocookies'),
+       ('Guldhorn',2,'Crunchy waffel filled with vannila'),
        ('Magnum Double White Chocolate & Cookies',4,'Vanilla icecream with white chocolate chunks, chocolate cookie-crumblesauce and a thick layer of white chocolate on top'),
-       ('Zapp',4,'Popsicle with caramel flavour and pretty colours'),
-       ('Mango-sorbet',7,'Amazing sorbet, refreshing sorbet with the freshness from the mango'),
-       ('Kokos-sorbet',7,'Coconut sorbet, refreshing sorbet with the delicious taste of coconuts'),
-       ('Lakrids is',4,'Liquorice flavoured ice cream'),
-       ('VegaNice Choco/Mint', 3, 'Vegan chocolate and mint icecream in a black waffel cone');
+       ('Zapp',3,'Popsicle with caramel flavour and pretty colours'),
+       ('Mango-sorbet',6,'Amazing sorbet, refreshing sorbet with the freshness from the mango'),
+       ('Kokos-sorbet',6,'Coconut sorbet, refreshing sorbet with the delicious taste of coconuts'),
+       ('Lakrids is',3,'Liquorice flavoured ice cream'),
+       ('VegaNice Choco/Mint', 2, 'Vegan chocolate and mint icecream in a black waffel cone');
+
+INSERT INTO public.ss_rank_list(user_id, title)
+VALUES (1, 'Daniels liste'),
+       (2, 'Rikkes liste'),
+       (2, 'Rikkes endnu bedre liste');

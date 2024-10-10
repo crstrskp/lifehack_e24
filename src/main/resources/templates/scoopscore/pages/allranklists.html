@@ -15,7 +15,25 @@
                  th:src="@{/images/lifehacklogo.png}"/>
         </a>
     </header>
-    <p>All rank list goes here</p>
+
+    <h3><p>All rank list goes here</p></h3>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Rank List</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:unless="${#ctx.allRankLists==null}"  th:each="rankList: ${#ctx.allRankLists}">
+            <td th:text="${allRankLists.user_id}"></td>
+            <td th:text="${allRankLists.title}"></td>
+        </tr>
+
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
