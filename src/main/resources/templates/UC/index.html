@@ -42,8 +42,8 @@
             <button type="submit">Convert</button>
         </form>
     </div>
-
-    <table id="table1" style="display: none">
+<div id="div1" style="display: none">
+    <table id="table1">
         <thead>
         <tr>
             <th>Unit</th>
@@ -81,52 +81,52 @@
         </tr>
         </tbody>
     </table>
-
-
-    <table id="table2" style="display: none">
+</div>
+<div id="div2" style="display: none">
+    <table id="table2">
         <thead>
         <tr>
             <th>Unit</th>
             <th>Converted Value</th>
         </tr>
         </thead>
-        <tbody id="conversionTable">
+        <tbody id="conversionTable1">
         <tr>
-            <td>Kilogram</td>
-            <td id="kilogramValue"></td>
+            <td>Meter</td>
+            <td id="meterValue"></td>
         </tr>
         <tr>
-            <td>Gram</td>
-            <td id="gramValue"></td>
+            <td>Centimeter</td>
+            <td id="centimeterValue"></td>
         </tr>
         <tr>
-            <td>Metric Ton</td>
-            <td id="metricTonValue"></td>
+            <td>Millimeter</td>
+            <td id="millimeterValue"></td>
         </tr>
         <tr>
-            <td>Long Ton</td>
-            <td id="longTonValue"></td>
+            <td>Kilometer</td>
+            <td id="kilometerValue"></td>
         </tr>
         <tr>
-            <td>Short Ton</td>
-            <td id="shortTonValue"></td>
+            <td>Feet</td>
+            <td id="feetValue"></td>
         </tr>
         <tr>
-            <td>Pound</td>
-            <td id="poundValue"></td>
+            <td>Inches</td>
+            <td id="inchesValue"></td>
         </tr>
         <tr>
-            <td>Ounce</td>
-            <td id="ounceValue"></td>
+            <td>Miles</td>
+            <td id="milesValue"></td>
         </tr>
         </tbody>
     </table>
-
+</div>
 </div>
 
 <script>
     document.getElementById('unit').addEventListener("change", function() {
-        document.getElementById('table1').style.display = "block";
+        document.getElementById('div1').style.display = "block";
     });
 
 
