@@ -5,10 +5,10 @@ public class RankListItem {
     private int id;
     private int rank_list_id;
     private int ice_cream_id;
-    private char tier;
+    private String tier;
     private int position;
 
-    public RankListItem(int id, int rank_list_id, int ice_cream_id, char tier, int position) {
+    public RankListItem(int id, int rank_list_id, int ice_cream_id, String tier, int position) {
         this.id = id;
         this.rank_list_id = rank_list_id;
         this.ice_cream_id = ice_cream_id;
@@ -28,7 +28,7 @@ public class RankListItem {
         return ice_cream_id;
     }
 
-    public char getTier() {
+    public String getTier() {
         return tier;
     }
 
