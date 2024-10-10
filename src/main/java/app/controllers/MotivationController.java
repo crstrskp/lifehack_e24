@@ -78,5 +78,15 @@ public class MotivationController {
 
     }
 
+    private Boolean validationForQuote(String quote) {
+
+        if (quote.equals("Fuck dig") || quote.equals("spegepølse")) {
+            return false;
+        }
+
+        return true;
+    }
+
+
 
 }
