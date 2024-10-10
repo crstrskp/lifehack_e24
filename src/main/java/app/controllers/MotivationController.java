@@ -7,6 +7,7 @@ import app.persistence.ConnectionPool;
 import app.persistence.MotivationMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
+import net.bytebuddy.pool.TypePool;
 
 
 public class MotivationController {
@@ -43,13 +44,16 @@ public class MotivationController {
 
     private static void addToFavorites(Context ctx, ConnectionPool connectionPool)
     {
-        String favoriteInput = ctx.formParam("favorite-id");
-        int favoriteId = Integer.parseInt(favoriteInput);
+        try {
+            String favoriteInput = ctx.formParam("favorite-id");
+            int favoriteId = Integer.parseInt(favoriteInput);
 
-        User user = ctx.sessionAttribute("currentUser");
-        try
-        {
+            User user = ctx.sessionAttribute("currentUser");
             MotivationMapper.addToFavorites(user, favoriteId, connectionPool);
+
+        } catch (IllegalArgumentException e) {
+            ctx.attribute("message", "ugyldigt input");
+            ctx.render("/motivational.html");
         } catch (DatabaseException e)
         {
             throw new RuntimeException(e);
@@ -64,7 +68,7 @@ public class MotivationController {
 
     private static void showMotivation(Context ctx, ConnectionPool pool){
 
-        Motivation quote = null;
+        Motivation quote;
         try
         {
             quote = MotivationMapper.getMotivation(pool);
