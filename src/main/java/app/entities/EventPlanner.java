@@ -1,5 +1,6 @@
 package app.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EventPlanner {
@@ -12,15 +13,16 @@ public class EventPlanner {
     private String description;
     private List<User> participants;
 
-    public EventPlanner(int eventId, int ownerId, boolean isOwner, String dateAndTime, String location, String title, String description, List<User> participants) {
+
+    public EventPlanner(int eventId, User owner, String dateAndTime, String location, String title, String description) {
         this.eventId = eventId;
-        this.ownerId = ownerId;
-        this.isOwner = isOwner;
+        this.ownerId = owner.getUserId();
+        this.isOwner = true; // Assuming the creator is the owner
         this.dateAndTime = dateAndTime;
         this.location = location;
         this.title = title;
         this.description = description;
-        this.participants = participants;
+        this.participants = new ArrayList<>(); // Initialize with an empty list
     }
 
     public String getTitle() {
