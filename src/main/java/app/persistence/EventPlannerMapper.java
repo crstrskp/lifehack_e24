@@ -106,4 +106,20 @@ public class EventPlannerMapper {
         }
     }
 
+    public static boolean isUserParticipant(int eventId, int userId, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "SELECT * FROM users_events WHERE event_id = ? AND user_id = ?";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, eventId);
+            ps.setInt(2, userId);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            throw new DatabaseException("Database error", e.getMessage());
+        }
+    }
+
 }
