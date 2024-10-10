@@ -19,7 +19,9 @@ public class ParmWeightMapper {
 
     public static ArrayList<ParmWeightDTO> getAllWeightPerUser(int user_id, ConnectionPool connectionPool) throws DatabaseException {
         ArrayList<ParmWeightDTO> parmWeightDTOs = new ArrayList<>();
-        String sql = "select * from public.parmweight where user_id=?";
+        String sql = "select * from public.parmweight " +
+                     "where user_id=? " +
+                     "ORDER BY CustomerName DESC";
 
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
