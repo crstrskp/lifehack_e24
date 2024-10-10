@@ -35,7 +35,7 @@ public class RankListMapper
                 String description = rs.getString("description");
                 boolean is_public = rs.getBoolean("is_public");
                 //TODO getRankListItems from user_id
-//                rankListItemPerUser = RankListItemMapper.getRankListItems();
+//                rankListItemPerUser = RankListItemMapper.getRankListItemsPerUser();
                 rankLists.add(new RankList(id, user_id, title, description, is_public, rankListItemPerUser));
             }
         }
