@@ -10,7 +10,7 @@ import io.javalin.http.Context;
 public class EventPlannerController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.get("/eventplanner", ctx -> index(ctx, connectionPool));
-        app.get("/eventplanner/create", ctx -> ctx.render("createevent.html"));
+        app.get("/eventplanner/create", ctx -> ctx.render("/eventplanner/createevent.html"));
         app.post("/eventplanner/create", ctx -> createEvent(ctx, connectionPool));
         app.post("/eventplanner/delete", ctx -> deleteEvent(ctx, connectionPool));
         app.post("/eventplanner/leave", ctx -> leaveEvent(ctx, connectionPool));
