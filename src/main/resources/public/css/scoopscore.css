@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    /*background-color: powderblue;*/
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin-bottom: 40px;
+}
+
+header a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header a img {
+    width: 40%;
+}
+
+
+.tier-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.tier-row {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    width: 80%;
+}
+
+.tier-label {
+    font-size: 4em;
+    width: 100px;
+    height: 100px;
+    line-height: 90px;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#s-tier .tier-label {
+    background-color: #FF6B6B;
+}
+
+#a-tier .tier-label {
+    background-color: #FFA45B;
+}
+
+#b-tier .tier-label {
+    background-color: #FFD371;
+}
+
+#c-tier .tier-label {
+    background-color: #E0E100;
+}
+
+#d-tier .tier-label {
+    background-color: #A7E080;
+}
+
+#f-tier .tier-label {
+    background-color: #80E0A7;
+}
+
+.tier-cells {
+    flex-grow: 1;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.image-row {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.tier-image {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.tier-image:hover {
+    transform: scale(1.1);
+}
