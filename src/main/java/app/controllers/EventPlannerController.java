@@ -10,6 +10,7 @@ import io.javalin.http.Context;
 public class EventPlannerController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.get("/eventplanner", ctx -> index(ctx, connectionPool));
+        app.get("/eventplanner/create", ctx -> ctx.render("createevent.html"));
         app.post("/eventplanner/create", ctx -> createEvent(ctx, connectionPool));
         app.post("/eventplanner/delete", ctx -> deleteEvent(ctx, connectionPool));
         app.post("/eventplanner/leave", ctx -> leaveEvent(ctx, connectionPool));
@@ -34,11 +35,11 @@ public class EventPlannerController {
                 ctx.render("/eventplanner/index.html");
             } catch (DatabaseException e) {
                 ctx.attribute("message", "Something went wrong, Try again");
-                ctx.render("/eventplanner/index.html");
+                ctx.render("/eventplanner/createevent.html");
             }
         } else {
             ctx.attribute("message", "Event name must be at least 3 characters long");
-            ctx.render("/eventplanner/index.html");
+            ctx.render("/eventplanner/createevent.html");
         }
     }
 
