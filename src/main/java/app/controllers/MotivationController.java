@@ -41,29 +41,30 @@ public class MotivationController {
     }
 
     private static void addToFavorites(Context ctx, ConnectionPool connectionPool) {
+        String msg;
         try {
+
             User user = ctx.sessionAttribute("currentUser");
             if (user == null) {
-                ctx.attribute("message", "husk at logge ind for at tilføje til favoritter");
+                msg = "husk at logge ind for at tilføje til favoritter";
             } else {
                 String favoriteInput = ctx.formParam("favorite-id");
                 if (favoriteInput == null)
                 {
-                    ctx.attribute("Vælg det citat du vil tilføje til favoritter");
+                    msg = "Vælg det citat du vil tilføje til favoritter";
                 } else {
                     int favoriteId = Integer.parseInt(favoriteInput);
                     MotivationMapper.addToFavorites(user, favoriteId, connectionPool);
+                    msg = "Dit citat er tilføjet til din favoritter";
                 }
             }
         } catch (IllegalArgumentException e) {
-            ctx.attribute("message", "ugyldigt input");
-            ctx.render("/motivational.html");
-        } catch (DatabaseException e) {
-            throw new RuntimeException(e);
-        }
-        String msg = "Dit citat er tilføjet til din favoritter";
+            msg = "ugyldigt input";
 
-        ctx.attribute("motivation", msg);
+        } catch (DatabaseException e) {
+            msg = e.getMessage();
+        }
+        ctx.attribute("message", msg);
         showMotivation(ctx, connectionPool);
 
     }
