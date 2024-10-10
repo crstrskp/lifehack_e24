@@ -64,6 +64,7 @@ public class MotivationController {
         String msg = "Dit citat er tilføjet til din favoritter";
 
         ctx.attribute("motivation", msg);
+        showMotivation(ctx, connectionPool);
 
     }
 
