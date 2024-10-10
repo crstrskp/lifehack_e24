@@ -17,14 +17,13 @@ public class RankListMapper
     public static List<RankList> getAllPublicRankList(boolean isPublic, ConnectionPool connectionPool) throws DatabaseException
     {
         List<RankList> rankLists = new ArrayList<>();
-        String sql = "SELECT * FROM ss_rank_list WHERE is_public =?";
+        String sql = "SELECT * FROM ss_rank_list WHERE is_public =true";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql);
         )
         {
-            ps.setBoolean(1, isPublic);
             ResultSet rs = ps.executeQuery();
             while (rs.next())
             {

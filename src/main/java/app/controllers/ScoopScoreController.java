@@ -28,7 +28,7 @@ public class ScoopScoreController
         try {
             List<RankList> allRankLists = RankListMapper.getAllPublicRankList(true, connectionPool);
             ctx.attribute("allRankLists", allRankLists);
-            ctx.render("allranklists.html");
+            ctx.render("/scoopscore/pages/allranklists.html");
         } catch (DatabaseException e)
         {
             ctx.attribute("message", e.getMessage());

@@ -27,9 +27,9 @@
         </thead>
         <tbody>
 
-        <tr th:unless="${#ctx.allRankLists==null}"  th:each="rankList: ${#ctx.allRankLists}">
-            <td th:text="${allRankLists.user_id}"></td>
-            <td th:text="${allRankLists.title}"></td>
+        <tr th:unless="${allRankLists==null}"  th:each="ranklist: ${allRankLists}">
+            <td th:text="${ranklist.user_id}"></td>
+            <td th:text="${ranklist.title}"></td>
         </tr>
 
         </tbody>
