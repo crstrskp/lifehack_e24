@@ -5,13 +5,13 @@ public class SSIceCream {
     private int id;
     private int brandId;
     private String name;
-    private String discription;
+    private String description;
 
-    public SSIceCream(int id, int brandId, String name, String discription) {
+    public SSIceCream(int id, int brandId, String name, String description) {
         this.id = id;
         this.brandId = brandId;
         this.name = name;
-        this.discription = discription;
+        this.description = description;
     }
 
     public int getId() {
@@ -26,8 +26,8 @@ public class SSIceCream {
         return name;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class SSIceCream {
                 "id=" + id +
                 ", brandId=" + brandId +
                 ", name='" + name + '\'' +
-                ", discription='" + discription + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 
