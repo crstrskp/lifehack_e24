@@ -9,7 +9,6 @@ body {
 
 }
 
-
 .contact-form {
     background-color: white;
     padding: 20px 30px 50px 30px;
@@ -19,14 +18,12 @@ body {
     width: 100%;
 }
 
-
 .contact-form h2 {
     font-size: 24px;
     margin-bottom: 15px;
     color: #323232;
     text-align: center;
 }
-
 
 .contact-form label {
     font-size: 14px;
@@ -80,7 +77,6 @@ body {
     border: none;
     outline: none;
     background-color: transparent;
-
 }
 
 .contact-form .success {
@@ -89,6 +85,7 @@ body {
     text-align: center;
     font-size: 14px;
 }
+
 img {
     margin: 50px;
 }
