@@ -137,3 +137,23 @@ header a img {
     left: 0;
     z-index: 1;
 }
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr:nth-child(even) {
+    background-color: #bbbebf;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+thead {
+    background-color: #bbbebf;
+}
