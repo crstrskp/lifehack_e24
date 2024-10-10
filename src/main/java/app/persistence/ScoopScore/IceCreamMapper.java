@@ -30,8 +30,8 @@ public class IceCreamMapper
                 int id = rs.getInt("id");
                 int brandId = rs.getInt("brand_id");
                 String name = rs.getString("name");
-                String discription = rs.getString("description");
-                iceCreamList.add(new SSIceCream(id, brandId, name, discription));
+                String description = rs.getString("description");
+                iceCreamList.add(new SSIceCream(id, brandId, name, description));
             }
         } catch (SQLException e)
         {
