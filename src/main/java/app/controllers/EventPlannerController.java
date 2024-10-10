@@ -44,7 +44,7 @@ public class EventPlannerController
                 } else {
                     ctx.attribute("message", "Event must be at least 3 characters long");
                 }
-                List<EventPlanner> eventPlannerList = EventPlannerMapper.getAllEvents(currentuser.getUserName(), connectionPool);
+                List<EventPlanner> eventPlannerList = EventPlannerMapper.getAllEvents(eventDate, connectionPool);
                 ctx.attribute("eventPlannerList", eventPlannerList);
                 ctx.render("/eventplanner/index.html");
 
