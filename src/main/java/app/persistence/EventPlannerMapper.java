@@ -8,7 +8,7 @@ import java.sql.*;
 public class EventPlannerMapper {
 
     public static void createEvent(User owner, String dateAndTime, String location, String title, String decription, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "insert into eventplanner (ownerid, dateandtime, location, title, decription, is_owner) values (?,?,?,?,?,true)";
+        String sql = "insert into eventplanner (owner_id, dateandtime, location, title, description, is_owner) values (?,?,?,?,?,true)";
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -34,7 +34,7 @@ public class EventPlannerMapper {
     }
 
     public static boolean isEventOwner(int eventId, int userId, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "SELECT ownerid FROM eventplanner WHERE eventid = ?";
+        String sql = "SELECT owner_id FROM eventplanner WHERE event_id = ?";
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -53,7 +53,7 @@ public class EventPlannerMapper {
     }
 
     public static void deleteEvent(int eventId, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "delete from eventplanner where eventid=?";
+        String sql = "delete from eventplanner where event_id=?";
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
@@ -70,7 +70,7 @@ public class EventPlannerMapper {
     }
 
     public static void leaveEvent (int eventId, User user, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "delete from eventplanner where eventid=? and userid=?";
+        String sql = "delete from event_participants where event_id=? and user_id=?";
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -88,7 +88,7 @@ public class EventPlannerMapper {
         }
     }
     public static void joinEvent (int eventId, User user, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "delete from eventplanner where eventid=? and userid=?";
+        String sql = "INSERT INTO event_participants (event_id, user_id) VALUES (?,?)";
 
         try (
                 Connection connection = connectionPool.getConnection();
