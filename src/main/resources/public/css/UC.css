@@ -28,7 +28,7 @@ h1 {
 .converter {
     display: flex;
     flex-direction: column;
-    gap: 15px;  /* Adds spacing between elements */
+    gap: 15px; /* Adds spacing between elements */
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;

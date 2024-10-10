@@ -9,15 +9,14 @@ import java.util.Map;
 public class WeightConversion {
 
 
-
     public static void addRoutes(Javalin app) {
         app.post("convertWeight", ctx -> convertWeight(ctx));
     }
 
-
+    // Læg alle konverteringer i en HashMap
     public static Map<String, Double> convertWeight(Context ctx) {
-        double weight = Double.parseDouble(ctx.formParam("weight"));
-        String unit = ctx.formParam("unit");
+        double weight = Double.parseDouble(ctx.formParam("weight")); //Hent vægten her
+        String unit = ctx.formParam("unit"); // Hent enheden her
         double kg = convertToKilograms(weight, unit);
         Map<String, Double> conversions = new HashMap<>();
         conversions.put("Kilogram", kg);
@@ -34,7 +33,7 @@ public class WeightConversion {
     }
 
     public static double convertToKilograms(double weight, String unit) {
-        switch (unit.toLowerCase()) { // Konverterer til små bogstaver
+        switch (unit.toLowerCase()) {
             case "kilogram":
                 return weight;
             case "gram":

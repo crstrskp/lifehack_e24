@@ -26,7 +26,7 @@
     <div class="converter">
         <form id="weightForm">
             <label for="weight">Enter Value:</label>
-            <input type="number" name="weight" id="weight" placeholder="Enter a number" />
+            <input type="number" name="weight" id="weight" placeholder="Enter a number"/>
 
             <label for="unit">Select Unit:</label>
             <select name="unit" id="unit">
@@ -38,7 +38,6 @@
                 <option value="Pound">Pound</option>
                 <option value="Ounce">Ounce</option>
             </select>
-
 
 
             <button type="submit">Convert</button>
@@ -88,7 +87,7 @@
     <div class="converter">
         <form id="lengthForm">
             <label for="length">Enter Length Value:</label>
-            <input type="number" name="length" id="length" placeholder="Enter a number" />
+            <input type="number" name="length" id="length" placeholder="Enter a number"/>
 
             <label for="lengthUnit">Select Length Unit:</label>
             <select name="lengthUnit" id="lengthUnit">
@@ -146,16 +145,15 @@
     </div>
 
 
-
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('unit').addEventListener("change", function() {
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('unit').addEventListener("change", function () {
             document.getElementById('div1').style.display = "block";
         });
 
-        document.getElementById('weightForm').addEventListener('submit', async function(event) {
+        document.getElementById('weightForm').addEventListener('submit', async function (event) {
             event.preventDefault();
 
             const formData = new FormData(this);
@@ -183,11 +181,11 @@
 
 
 <script>
-    document.getElementById('lengthUnit').addEventListener("change", function() {
+    document.getElementById('lengthUnit').addEventListener("change", function () {
         document.getElementById('div2').style.display = "block";
     });
 
-    document.getElementById('lengthForm').addEventListener('submit', async function(event) {
+    document.getElementById('lengthForm').addEventListener('submit', async function (event) {
         event.preventDefault();
 
         const formData = new FormData(this);
@@ -196,7 +194,6 @@
             method: 'POST',
             body: formData
         });
-
 
 
         if (response.ok) {
