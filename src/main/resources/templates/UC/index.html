@@ -157,5 +157,71 @@
         }
     });
 </script>
+
+<script>
+    document.getElementById('unit').addEventListener("change", function() {
+        document.getElementById('table1').style.display = "block";
+    });
+
+
+    document.getElementById('weightForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        const response = await fetch('/convertWeight', {
+            method: 'POST',
+            body: formData
+        });
+
+
+
+        if (response.ok) {
+            document.getElementById('table1').style.display = "block";
+            const result = await response.json();
+            console.log(JSON.stringify(result))
+            document.getElementById('kilogramValue').innerText = result["Kilogram"];
+            document.getElementById('gramValue').innerText = result["Gram"];
+            document.getElementById('metricTonValue').innerText = result["Metric Ton"];
+            document.getElementById('longTonValue').innerText = result["Long Ton"];
+            document.getElementById('shortTonValue').innerText = result["Short Ton"];
+            document.getElementById('poundValue').innerText = result["Pound"];
+            document.getElementById('ounceValue').innerText = result["Ounce"];
+        } else {
+            document.getElementById('result').innerText = 'Error occurred while converting weight.';
+        }
+    });
+</script>
+
+<script>
+    document.getElementById('unit').addEventListener("change", function() {
+        document.getElementById('table2').style.display = "block";
+    });
+
+    document.getElementById('lengthForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        const response = await fetch('/convertLength', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            document.getElementById('table2').style.display = "block";
+            const result = await response.json();
+            console.log(JSON.stringify(result));
+            document.getElementById('metersValue').innerText = result["Meters"];
+            document.getElementById('centimetersValue').innerText = result["Centimeters"];
+            document.getElementById('millimetersValue').innerText = result["Millimeters"];
+            document.getElementById('kilometersValue').innerText = result["Kilometers"];
+            document.getElementById('feetValue').innerText = result["Feet"];
+            document.getElementById('inchesValue').innerText = result["Inches"];
+            document.getElementById('milesValue').innerText = result["Miles"];
+        } else {
+            document.getElementById('result').innerText = 'Error occurred while converting length.';
+        }
+    });
+</script>
+
 </body>
 </html>
