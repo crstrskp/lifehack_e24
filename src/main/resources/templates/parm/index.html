@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<title>Timezones</title>
+<title>Weight watch</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../public/css/parm/parm-styles.css" th:href="@{/css/parm/parm-styles.css}" rel="stylesheet"/>
 <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-<link href="../../public/css/parm/parm-styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-<link href="../../public/css/timezones.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -18,33 +18,33 @@
         </a>
     </header>
 
-<!--    <h1>Welcome to weight watch, <span th:text="${session.currentUser.username}"></span></h1>-->
-
-
+    <span th:text="${session.currentUser.username}"></span>
     <form class="weight" method="post">
         <label for="weight_id">Current weight:</label>
-        <input type="text" id="weight_id" name="weight" placeholder="Enter your current weight here!"/>
+        <input type="number" id="weight_id" name="weight" placeholder="Enter your current weight here!"/>
 
         <div class="knappen">
 
-        <button type="submit" th:formaction="@{/parm/}">Submit</button>
+        <button id="knap" type="submit" th:formaction="@{/parm/}">Submit</button>
         </div>
 
     </form>
 
-<!--    <table class="weight-table">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>Date</th>-->
-<!--            <th>Weight</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="weight: ${weightList}">-->
-<!--            <td th:datetime="${weight.date}"></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
+    <table class="weight-table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Weight</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <tr th:each="weight : ${weightList}">
+            <td th:text="${#dates.format(weight.date, 'yyyy-MM-dd')}"></td>
+            <td th:text="${weight.weight}"></td>
+        </tr>
+        </tbody>
+    </table>
 
 
 </div>

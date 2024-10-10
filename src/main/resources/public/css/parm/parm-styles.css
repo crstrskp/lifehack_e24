@@ -4,25 +4,66 @@ html * {
     box-sizing: border-box;
 }
 
+h1{
+    font-size: 20px;
+    font-family: "Helvetica Neue";
+    text-align: center;
+    margin-bottom: 5px;
+}
 
 body {
     display: flex;
-    align-items: center; /* Justerer etiketten og input-feltet lodret */
+    align-items: center;
 }
 
+.weight{
+    font-size: 20px;
+    font-family: "Helvetica Neue";
+
+}
 #weight_id{
-    width: 150px;
+    width: 230px;
+    height: 30px;
+    font-family: "Helvetica Neue";
+    font-size: 15px;
+    text-align: center;
 }
-
 
 label {
-    margin-right: 10px; /* Giver lidt afstand mellem etiketten og input-feltet */
+    margin-right: 10px;
 }
 
-.knappen {
+#knap {
     display: block;
-    margin-top: 40px;
-    width: 200px;
-
-
+    margin: auto;
+    margin-top: 25px;
+    padding: 5px 40px;
+    background-color: #2E6F40;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: large;
+    font-family: "Helvetica Neue";
+    box-shadow: 0 9px #999;
 }
+
+#knap:hover{
+    background-color: #68BA7F;
+}
+
+#knap:active{
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.weight-table, th, td{
+    margin: auto;
+    margin-top: 35px;
+    font-size: 20px;
+    font-family: "Helvetica Neue";
+    padding-left: 80px;
+    padding-right: 80px;
+    text-align: center;
+}
+
