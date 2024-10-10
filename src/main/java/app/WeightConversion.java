@@ -34,26 +34,26 @@ public class WeightConversion {
     }
 
     public static double convertToKilograms(double weight, String unit) {
-        switch (unit) {
-            case "Kilogram":
+        switch (unit.toLowerCase()) { // Konverterer til små bogstaver
+            case "kilogram":
                 return weight;
-            case "Gram":
+            case "gram":
                 return weight / 1000;
-            case "Metric Ton":
+            case "metric ton":
                 return weight * 1000;
-            case "Long ton":
+            case "long ton":
                 return weight * 1016.0469088;
-            case "Short Ton":
+            case "short ton":
                 return weight * 907.18474;
-            case "Pound":
+            case "pound":
                 return weight * 0.45359237;
-            case "Ounce":
+            case "ounce":
                 return weight * 0.0283495231;
             default:
                 throw new IllegalArgumentException("Ukendt enhed: " + unit);
-
         }
     }
+
 
     public static double kgToGrams(double kg) {
         return kg * 1000;

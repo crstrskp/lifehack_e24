@@ -39,175 +39,168 @@
                 <option value="Ounce">Ounce</option>
             </select>
 
+
+
             <button type="submit">Convert</button>
         </form>
+        <div id="div1" style="display: none">
+            <table id="table1">
+                <thead>
+                <tr>
+                    <th>Unit</th>
+                    <th>Converted Value</th>
+                </tr>
+                </thead>
+                <tbody id="conversionTable">
+                <tr>
+                    <td>Kilogram</td>
+                    <td id="kilogramValue"></td>
+                </tr>
+                <tr>
+                    <td>Gram</td>
+                    <td id="gramValue"></td>
+                </tr>
+                <tr>
+                    <td>Metric Ton</td>
+                    <td id="metricTonValue"></td>
+                </tr>
+                <tr>
+                    <td>Long Ton</td>
+                    <td id="longTonValue"></td>
+                </tr>
+                <tr>
+                    <td>Short Ton</td>
+                    <td id="shortTonValue"></td>
+                </tr>
+                <tr>
+                    <td>Pound</td>
+                    <td id="poundValue"></td>
+                </tr>
+                <tr>
+                    <td>Ounce</td>
+                    <td id="ounceValue"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-<div id="div1" style="display: none">
-    <table id="table1">
-        <thead>
-        <tr>
-            <th>Unit</th>
-            <th>Converted Value</th>
-        </tr>
-        </thead>
-        <tbody id="conversionTable">
-        <tr>
-            <td>Kilogram</td>
-            <td id="kilogramValue"></td>
-        </tr>
-        <tr>
-            <td>Gram</td>
-            <td id="gramValue"></td>
-        </tr>
-        <tr>
-            <td>Metric Ton</td>
-            <td id="metricTonValue"></td>
-        </tr>
-        <tr>
-            <td>Long Ton</td>
-            <td id="longTonValue"></td>
-        </tr>
-        <tr>
-            <td>Short Ton</td>
-            <td id="shortTonValue"></td>
-        </tr>
-        <tr>
-            <td>Pound</td>
-            <td id="poundValue"></td>
-        </tr>
-        <tr>
-            <td>Ounce</td>
-            <td id="ounceValue"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<div id="div2" style="display: none">
-    <table id="table2">
-        <thead>
-        <tr>
-            <th>Unit</th>
-            <th>Converted Value</th>
-        </tr>
-        </thead>
-        <tbody id="conversionTable1">
-        <tr>
-            <td>Meter</td>
-            <td id="meterValue"></td>
-        </tr>
-        <tr>
-            <td>Centimeter</td>
-            <td id="centimeterValue"></td>
-        </tr>
-        <tr>
-            <td>Millimeter</td>
-            <td id="millimeterValue"></td>
-        </tr>
-        <tr>
-            <td>Kilometer</td>
-            <td id="kilometerValue"></td>
-        </tr>
-        <tr>
-            <td>Feet</td>
-            <td id="feetValue"></td>
-        </tr>
-        <tr>
-            <td>Inches</td>
-            <td id="inchesValue"></td>
-        </tr>
-        <tr>
-            <td>Miles</td>
-            <td id="milesValue"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+
+    <div class="converter">
+        <form id="lengthForm">
+            <label for="length">Enter Length Value:</label>
+            <input type="number" name="length" id="length" placeholder="Enter a number" />
+
+            <label for="lengthUnit">Select Length Unit:</label>
+            <select name="lengthUnit" id="lengthUnit">
+                <option value="Meters">Meters</option>
+                <option value="Centimeters">Centimeters</option>
+                <option value="Millimeters">Millimeters</option>
+                <option value="Kilometers">Kilometers</option>
+                <option value="Feet">Feet</option>
+                <option value="Inches">Inches</option>
+                <option value="Miles">Miles</option>
+            </select>
+
+            <button type="submit">Convert Length</button>
+        </form>
+        <div id="div2" style="display: none">
+            <table id="table2">
+                <thead>
+                <tr>
+                    <th>Unit</th>
+                    <th>Converted Value</th>
+                </tr>
+                </thead>
+                <tbody id="conversionTable1">
+                <tr>
+                    <td>Meters</td>
+                    <td id="metersValue"></td>
+                </tr>
+                <tr>
+                    <td>Centimeters</td>
+                    <td id="centimetersValue"></td>
+                </tr>
+                <tr>
+                    <td>Millimeters</td>
+                    <td id="millimetersValue"></td>
+                </tr>
+                <tr>
+                    <td>Kilometers</td>
+                    <td id="kilometersValue"></td>
+                </tr>
+                <tr>
+                    <td>Feet</td>
+                    <td id="feetValue"></td>
+                </tr>
+                <tr>
+                    <td>Inches</td>
+                    <td id="inchesValue"></td>
+                </tr>
+                <tr>
+                    <td>Miles</td>
+                    <td id="milesValue"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
 </div>
 
 <script>
-    document.getElementById('unit').addEventListener("change", function() {
-        document.getElementById('div1').style.display = "block";
-    });
-
-
-    document.getElementById('weightForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-
-        const formData = new FormData(this);
-        const response = await fetch('/convertWeight', {
-            method: 'POST',
-            body: formData
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('unit').addEventListener("change", function() {
+            document.getElementById('div1').style.display = "block";
         });
 
+        document.getElementById('weightForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
 
+            const formData = new FormData(this);
+            const response = await fetch('/convertWeight', {
+                method: 'POST',
+                body: formData
+            });
 
-        if (response.ok) {
-            document.getElementById('table1').style.display = "block";
-            const result = await response.json();
-            console.log(JSON.stringify(result))
-            document.getElementById('kilogramValue').innerText = result["Kilogram"];
-            document.getElementById('gramValue').innerText = result["Gram"];
-            document.getElementById('metricTonValue').innerText = result["Metric Ton"];
-            document.getElementById('longTonValue').innerText = result["Long Ton"];
-            document.getElementById('shortTonValue').innerText = result["Short Ton"];
-            document.getElementById('poundValue').innerText = result["Pound"];
-            document.getElementById('ounceValue').innerText = result["Ounce"];
-        } else {
-            document.getElementById('result').innerText = 'Error occurred while converting weight.';
-        }
+            if (response.ok) {
+                document.getElementById('div1').style.display = "block";
+                const result = await response.json();
+                document.getElementById('kilogramValue').innerText = result["Kilogram"];
+                document.getElementById('gramValue').innerText = result["Gram"];
+                document.getElementById('metricTonValue').innerText = result["Metric Ton"];
+                document.getElementById('longTonValue').innerText = result["Long Ton"];
+                document.getElementById('shortTonValue').innerText = result["Short Ton"];
+                document.getElementById('poundValue').innerText = result["Pound"];
+                document.getElementById('ounceValue').innerText = result["Ounce"];
+            } else {
+                document.getElementById('result').innerText = 'Error occurred while converting weight.';
+            }
+        });
     });
 </script>
 
-<script>
-    document.getElementById('unit').addEventListener("change", function() {
-        document.getElementById('table1').style.display = "block";
-    });
-
-
-    document.getElementById('weightForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-
-        const formData = new FormData(this);
-        const response = await fetch('/convertWeight', {
-            method: 'POST',
-            body: formData
-        });
-
-
-
-        if (response.ok) {
-            document.getElementById('table1').style.display = "block";
-            const result = await response.json();
-            console.log(JSON.stringify(result))
-            document.getElementById('kilogramValue').innerText = result["Kilogram"];
-            document.getElementById('gramValue').innerText = result["Gram"];
-            document.getElementById('metricTonValue').innerText = result["Metric Ton"];
-            document.getElementById('longTonValue').innerText = result["Long Ton"];
-            document.getElementById('shortTonValue').innerText = result["Short Ton"];
-            document.getElementById('poundValue').innerText = result["Pound"];
-            document.getElementById('ounceValue').innerText = result["Ounce"];
-        } else {
-            document.getElementById('result').innerText = 'Error occurred while converting weight.';
-        }
-    });
-</script>
 
 <script>
-    document.getElementById('unit').addEventListener("change", function() {
-        document.getElementById('table2').style.display = "block";
+    document.getElementById('lengthUnit').addEventListener("change", function() {
+        document.getElementById('div2').style.display = "block";
     });
 
     document.getElementById('lengthForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
         const formData = new FormData(this);
+        console.log(JSON.stringify(formData))
         const response = await fetch('/convertLength', {
             method: 'POST',
             body: formData
         });
 
+
+
         if (response.ok) {
-            document.getElementById('table2').style.display = "block";
+            document.getElementById('div2').style.display = "block";
             const result = await response.json();
             console.log(JSON.stringify(result));
             document.getElementById('metersValue').innerText = result["Meters"];

@@ -13,10 +13,10 @@ public class LengthConversion {
     }
 
     public static Map<String, Double> convertLength(Context ctx) {
-        double length = Double.parseDouble(ctx.formParam("length"));
-        String unit = ctx.formParam("unit");
+        System.out.println(ctx.formParam("lengthUnit"));
 
-        // Konverter først til meter
+        double length = Double.parseDouble(ctx.formParam("length")); // Hent længde her som et tal
+        String unit = ctx.formParam("lengthUnit"); // Hent enheden her
         double meters = convertToMeters(length, unit);
 
         // Læg alle konverteringer i en HashMap
@@ -29,7 +29,7 @@ public class LengthConversion {
         conversions.put("Inches", metersToInches(meters));
         conversions.put("Miles", metersToMiles(meters));
 
-        // Returnér resultatet som JSON
+
         ctx.json(conversions);
         return conversions;
     }

@@ -34,6 +34,7 @@ public class Main
 
         UserController.addRoutes(app, connectionPool);
         WeightConversion.addRoutes(app);
+        LengthConversion.addRoutes(app);
         TimeZonesController.addRoutes(app);
         WarhammerController.addRoutes(app);
         UCController.addRoutes(app, connectionPool);
