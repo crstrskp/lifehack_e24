@@ -135,3 +135,8 @@ VALUES ('Caramel Brownie Party',1,'The best icecream on the market - it is a car
        ('Kokos-sorbet',6,'Coconut sorbet, refreshing sorbet with the delicious taste of coconuts'),
        ('Lakrids is',3,'Liquorice flavoured ice cream'),
        ('VegaNice Choco/Mint', 2, 'Vegan chocolate and mint icecream in a black waffel cone');
+
+INSERT INTO public.ss_rank_list(user_id, title)
+VALUES (1, 'Daniels liste'),
+       (2, 'Rikkes liste'),
+       (2, 'Rikkes endnu bedre liste');
