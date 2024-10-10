@@ -1,7 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    /*background-color: powderblue;*/
-    /*color: white;*/
+    color: white;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -20,7 +19,6 @@ header a {
 header a img {
     width: 40%;
 }
-
 
 .tier-list {
     display: flex;
@@ -79,6 +77,26 @@ header a img {
     display: flex;
     align-items: center;
     border-radius: 5px;
+    position: relative;
+}
+
+.ice-cream-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+.ice-cream-layer {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.ice-cream-layer:nth-child(1) {
+    z-index: 2; /* Bring the first layer on top */
 }
 
 .ice-cream-images {
@@ -100,22 +118,22 @@ header a img {
     transform: scale(1.1);
 }
 
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
+.dragging {
+    opacity: 0.5;
+}
+
+.drop-zone {
+    border: 2px dashed #ccc;
+    padding: 5px;
+    height: 100%;
     width: 100%;
-}
-
-tr:nth-child(even) {
-    background-color: #bbbebf;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-}
-
-thead {
-    background-color: #bbbebf;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
