@@ -21,7 +21,7 @@
     <span th:text="${session.currentUser.username}"></span>
     <form class="weight" method="post">
         <label for="weight_id">Current weight:</label>
-        <input type="text" id="weight_id" name="weight" placeholder="Enter your current weight here!"/>
+        <input type="number" id="weight_id" name="weight" placeholder="Enter your current weight here!"/>
 
         <div class="knappen">
 
@@ -39,9 +39,9 @@
         </thead>
         <tbody>
         <tr>
-          <tr th:each="weight: ${weightList}">
-                <td th:text="${specificDate}"></td>
-
+        <tr th:each="weight : ${weightList}">
+            <td th:text="${#dates.format(weight.date, 'yyyy-MM-dd')}"></td>
+            <td th:text="${weight.weight}"></td>
         </tr>
         </tbody>
     </table>
