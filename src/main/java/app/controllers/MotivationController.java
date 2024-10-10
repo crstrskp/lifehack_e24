@@ -15,6 +15,7 @@ public class MotivationController {
         app.get("/motivational", ctx -> showMotivation(ctx, pool));
         app.post("/motivation", ctx -> addMotivation(ctx, pool));
         app.post("/motivational/addtofavorites", ctx -> addToFavorites(ctx, pool));
+        app.get("/motivational/addmotivation", ctx -> ctx.render("/motivational/newmotivational.html"));
 
     }
 
