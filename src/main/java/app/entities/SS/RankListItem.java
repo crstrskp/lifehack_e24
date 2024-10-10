@@ -39,21 +39,17 @@ public class RankListItem {
         return position;
     }
 
-    public List<RankListItem> getUserRankListItemOnTier(RankList rankList, List<RankListItem> items, int userID, String tier)
+    public List<RankListItem> getUserRankListItemOnTier(RankList rankList, int userID, String tier)
     {
         List<RankListItem> itemsOnTier = new ArrayList<>();
 
-        for(RankListItem rli: items)
+        for(RankListItem rli: rankList.getItems())
         {
-            // Checks if the items is from the correct rankList,
-            // and it belongs to the correct user
-            if(rli.getId() == rankList.getId() && rankList.getUser_id() == userID)
+            // Checks if the rankList belongs to the correct user
+            // and if the RankListItem has the correct tier
+            if(rankList.getUser_id() == userID && rli.getTier().equals(tier))
             {
-                // Checks if the item has the correct tier
-                if(rli.getTier().equals(tier))
-                {
                     itemsOnTier.add(rli);
-                }
             }
         }
 
