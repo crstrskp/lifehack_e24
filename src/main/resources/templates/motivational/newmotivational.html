@@ -15,30 +15,27 @@
             <img alt="logo" src="../../public/images/8ball-logo.png" th:src="@{/images/8ball-logo.png}"/>
         </a>
     </header>
-    <h1 class="mx-auto">Motivational Quotes</h1>
+    <h1 class="mx-auto">New Motivationals</h1>
     <div class="card mx-auto motivation">
         <div class="card-body">
-            <h5 class="card-title">Få et tilfældigt citat vist neden for</h5>
-            <p class="card-text" th:if="${motivation != null}" th:text="${motivation.motivationText}"></p>
-            <a th:href="@{/motivational}" href="/motivational.html" class="btn btn-primary m-3">Giv mig motivation</a>
-            <button th:if="${#ctx.session.currentUser != null}" class="btn btn-primary" type="submit" name="favorites-id" formaction="/favorites" value="${motivation.motivationId}">Gem denne motivation</button>
-            <a th:if="${#ctx.session.currentUser != null}" th:href="@{/motivational/newmotivational.html}" href="/motivational/newmotivational.html" class="newmotivational"> Add new motivation</a>
+            <h5 class="card-title">Upload dit eget motivational citat neden for</h5>
             </div>
         </div>
 
 
-    <h4> Log ind og upload dit eget </h4>
     <form class="generic-form" method="post">
         <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" placeholder="Enter your username" id="username" aria-describedby="emailHelp">
+            <label for="quote-title" class="form-label">Titel for dit citat</label>
+            <input type="text" class="form-control" name="quote-title" placeholder="Skriv titlen for dit citat" id="quote-citat" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" placeholder="Enter your password" id="exampleInputPassword1">
+            <label for="quote-text" class="form-label">Tekst</label>
+            <input type="quote-text" class="form-control" name="quote-text" placeholder="Skriv tekst" id="quote-text">
         </div>
-        <button class="btn btn-ok" type="submit" formaction="/login">Login</button>
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+        <button th:if="${#ctx.session.currentUser != null}" class="btn btn-primary" type="submit" formaction="/newmotivationals">Upload mit citat</button>
+
+
     </form>
 
 
