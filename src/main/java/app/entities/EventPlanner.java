@@ -25,6 +25,14 @@ public class EventPlanner {
         this.participants = new ArrayList<>(); // Initialize with an empty list
     }
 
+    public EventPlanner(String dateAndTime, String location, String title, String description)
+    {
+        this.dateAndTime = dateAndTime;
+        this.location = location;
+        this.title = title;
+        this.description = description;
+    }
+
     public String getTitle() {
         return title;
     }
