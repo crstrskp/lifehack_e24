@@ -137,10 +137,4 @@ public class MotivationMapper {
         }
     }
 
-
-
-/*
-    public static List<Motivation> getMotivations(ConnectionPool connectionPool){
-
-    }*/
 }
