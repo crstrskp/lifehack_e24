@@ -11,7 +11,7 @@ import java.util.List;
 public class MotivationMapper {
 
     public static void newMotivation(String motivationTitle, String motivationText, String imageURL, User author, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "INSERT INTO motivational_quotes (title, text, image_url, author_id) VALUES (?,?,?)";
+        String sql = "INSERT INTO motivational_quotes (title, text, image_url, author_id) VALUES (?,?,?,?)";
 
         try(Connection connection = connectionPool.getConnection()){
             try(PreparedStatement ps = connection.prepareStatement(sql)){

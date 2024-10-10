@@ -11,29 +11,27 @@ import io.javalin.http.Context;
 
 public class MotivationController {
 
-    public static void addRoutes(Javalin app, ConnectionPool pool){
-        app.get("/motivational", ctx -> showMotivation(ctx,pool));
-        app.post("/motivation", ctx -> addMotivation(ctx,pool));
-        app.post("/motivational/addtofavorites", ctx -> addToFavorites(ctx, pool) );
+    public static void addRoutes(Javalin app, ConnectionPool pool) {
+        app.get("/motivational", ctx -> showMotivation(ctx, pool));
+        app.post("/motivation", ctx -> addMotivation(ctx, pool));
+        app.post("/motivational/addtofavorites", ctx -> addToFavorites(ctx, pool));
 
     }
 
 
-    private static void addMotivation(Context ctx, ConnectionPool pool){
+    private static void addMotivation(Context ctx, ConnectionPool pool) {
 
-        String quoteTitel = ctx.formParam("motivational_quote");
-        String quoteText = ctx.formParam("motivational_quote");
+        String quoteTitel = ctx.formParam("quote-title");
+        String quoteText = ctx.formParam("quote-text");
 
         User author = ctx.sessionAttribute("currentUser");
-        if(author == null || quoteTitel == null || quoteText == null) {
+        if (author == null || quoteTitel == null || quoteText == null) {
             ctx.attribute("message", "Du skal være logget ind");
             ctx.redirect("/motivational");
-        }else {
-            try
-            {
-                MotivationMapper.newMotivation(quoteTitel,quoteText,"",author, pool);
-            } catch (DatabaseException e)
-            {
+        } else {
+            try {
+                MotivationMapper.newMotivation(quoteTitel, quoteText, "", author, pool);
+            } catch (DatabaseException e) {
                 throw new RuntimeException(e);
             }
             ctx.redirect("/motivational");
@@ -41,35 +39,40 @@ public class MotivationController {
 
     }
 
-    private static void addToFavorites(Context ctx, ConnectionPool connectionPool)
-    {
-        String favoriteInput = ctx.formParam("favorite-id");
-        int favoriteId = Integer.parseInt(favoriteInput);
-
-        User user = ctx.sessionAttribute("currentUser");
-        try
-        {
-            MotivationMapper.addToFavorites(user, favoriteId, connectionPool);
-        } catch (DatabaseException e)
-        {
+    private static void addToFavorites(Context ctx, ConnectionPool connectionPool) {
+        try {
+            User user = ctx.sessionAttribute("currentUser");
+            if (user == null) {
+                ctx.attribute("message", "husk at logge ind for at tilføje til favoritter");
+            } else {
+                String favoriteInput = ctx.formParam("favorite-id");
+                if (favoriteInput == null)
+                {
+                    ctx.attribute("Vælg det citat du vil tilføje til favoritter");
+                } else {
+                    int favoriteId = Integer.parseInt(favoriteInput);
+                    MotivationMapper.addToFavorites(user, favoriteId, connectionPool);
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            ctx.attribute("message", "ugyldigt input");
+            ctx.render("/motivational.html");
+        } catch (DatabaseException e) {
             throw new RuntimeException(e);
         }
         String msg = "Dit citat er tilføjet til din favoritter";
 
         ctx.attribute("motivation", msg);
+
     }
 
 
+    private static void showMotivation(Context ctx, ConnectionPool pool) {
 
-
-    private static void showMotivation(Context ctx, ConnectionPool pool){
-
-        Motivation quote = null;
-        try
-        {
+        Motivation quote;
+        try {
             quote = MotivationMapper.getMotivation(pool);
-        } catch (DatabaseException e)
-        {
+        } catch (DatabaseException e) {
             throw new RuntimeException(e);
         }
         ctx.attribute("motivation", quote);
