@@ -28,14 +28,13 @@ public class RankListMapper
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-                ArrayList<RankListItem> rankListItemPerUser = new ArrayList<>();
+                List<RankListItem> rankListItemPerUser = new ArrayList<>();
                 int id = rs.getInt("id");
                 int user_id = rs.getInt("user_id");
                 String title = rs.getString("title");
                 String description = rs.getString("description");
                 boolean is_public = rs.getBoolean("is_public");
-                //TODO getRankListItems from user_id
-//                rankListItemPerUser = RankListItemMapper.getRankListItemsPerUser();
+                rankListItemPerUser = RankListItemMapper.getAllRankListItemPerUser(user_id, connectionPool);
                 rankLists.add(new RankList(id, user_id, title, description, is_public, rankListItemPerUser));
             }
         }
