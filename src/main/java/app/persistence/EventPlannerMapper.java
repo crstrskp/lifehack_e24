@@ -142,7 +142,7 @@ public class EventPlannerMapper {
     }
 
     public static boolean isUserParticipant(int eventId, int userId, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "SELECT * FROM users_events WHERE event_id = ? AND user_id = ?";
+        String sql = "SELECT * FROM event_participants WHERE event_id = ? AND user_id = ?";
 
         try (
                 Connection connection = connectionPool.getConnection();
