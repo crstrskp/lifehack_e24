@@ -1,14 +1,17 @@
 package app.entities.SS;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RankListItem {
 
     private int id;
     private int rank_list_id;
     private int ice_cream_id;
-    private char tier;
+    private String tier;
     private int position;
 
-    public RankListItem(int id, int rank_list_id, int ice_cream_id, char tier, int position) {
+    public RankListItem(int id, int rank_list_id, int ice_cream_id, String tier, int position) {
         this.id = id;
         this.rank_list_id = rank_list_id;
         this.ice_cream_id = ice_cream_id;
@@ -28,12 +31,29 @@ public class RankListItem {
         return ice_cream_id;
     }
 
-    public char getTier() {
+    public String getTier() {
         return tier;
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public List<RankListItem> getUserRankListItemOnTier(RankList rankList, int userID, String tier)
+    {
+        List<RankListItem> itemsOnTier = new ArrayList<>();
+
+        for(RankListItem rli: rankList.getItems())
+        {
+            // Checks if the rankList belongs to the correct user
+            // and if the RankListItem has the correct tier
+            if(rankList.getUser_id() == userID && rli.getTier().equals(tier))
+            {
+                    itemsOnTier.add(rli);
+            }
+        }
+
+        return itemsOnTier;
     }
 
     @Override

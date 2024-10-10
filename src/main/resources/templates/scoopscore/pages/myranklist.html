@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>My Rank List</title>
@@ -16,48 +16,87 @@
         </a>
     </header>
     <p>My rank list goes here</p>
+    <p>Make your ice creams come true!</p>
 
-    <p>Make your icecreams come true!</p>
+    <table class="tier-list">
+        <thead>
+        <tr>
+            <div class="tier-row" id="s-tier">
+                <div class="tier-label">S</div>
+                <div class="tier-cells">
+                    <div class="drop-zone" id="drop-s-tier"></div>
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <div class="tier-row" id="a-tier">
+                <div class="tier-label">A</div>
+                <div class="tier-cells">
+                    <div class="drop-zone" id="drop-a-tier"></div>
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <div class="tier-row" id="b-tier">
+                <div class="tier-label">B</div>
+                <div class="tier-cells">
+                    <div class="drop-zone" id="drop-b-tier"></div>
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <div class="tier-row" id="c-tier">
+                <div class="tier-label">C</div>
+                <div class="tier-cells">
+                    <div class="drop-zone" id="drop-c-tier"></div>
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <div class="tier-row" id="d-tier">
+                <div class="tier-label">D</div>
+                <div class="tier-cells">
+                    <div class="drop-zone" id="drop-d-tier"></div>
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <div class="tier-row" id="f-tier">
+                <div class="tier-label">F</div>
+                <div class="tier-cells">
+                    <div class="drop-zone" id="drop-f-tier"></div>
+                </div>
+            </div>
+        </tr>
+        </thead>
+        <a href="/" th:href="@{/}">
+            <button type="submit">Done</button>
+        </a>
+    </table>
 
-    <div class="tier-list">
-        <!-- Tier Rows -->
-        <div class="tier-row" id="s-tier">
-            <div class="tier-label">S</div>
-            <div class="tier-cells"></div>
+    <div class="ice-cream-container">
+        <div class="ice-cream-layer">
+            <img id="ice-cream-1" src="../../../images/scoopscore/icecream/ice_cream_id_1.png" class="tier-image" draggable="true">
+            <img id="ice-cream-2" src="../../../images/scoopscore/icecream/ice_cream_id_2.png" class="tier-image" draggable="true">
+            <img id="ice-cream-3" src="../../../images/scoopscore/icecream/ice_cream_id_3.png" class="tier-image" draggable="true">
+            <img id="ice-cream-4" src="../../../images/scoopscore/icecream/ice_cream_id_4.png" class="tier-image" draggable="true">
+            <img id="ice-cream-5" src="../../../images/scoopscore/icecream/ice_cream_id_5.png" class="tier-image" draggable="true">
+            <img id="ice-cream-6" src="../../../images/scoopscore/icecream/ice_cream_id_6.png" class="tier-image" draggable="true">
+            <img id="ice-cream-7" src="../../../images/scoopscore/icecream/ice_cream_id_7.png" class="tier-image" draggable="true">
         </div>
-
-        <div class="tier-row" id="a-tier">
-            <div class="tier-label">A</div>
-            <div class="tier-cells"></div>
-        </div>
-
-        <div class="tier-row" id="b-tier">
-            <div class="tier-label">B</div>
-            <div class="tier-cells"></div>
-        </div>
-
-        <div class="tier-row" id="c-tier">
-            <div class="tier-label">C</div>
-            <div class="tier-cells"></div>
-        </div>
-
-        <div class="tier-row" id="d-tier">
-            <div class="tier-label">D</div>
-            <div class="tier-cells"></div>
-        </div>
-
-        <div class="tier-row" id="f-tier">
-            <div class="tier-label">F</div>
-            <div class="tier-cells"></div>
+        <div class="ice-cream-layer">
+            <img id="ice-cream-8" src="../../../images/scoopscore/icecream/ice_cream_id_8.png" class="tier-image" draggable="true">
+            <img id="ice-cream-9" src="../../../images/scoopscore/icecream/ice_cream_id_9.png" class="tier-image" draggable="true">
+            <img id="ice-cream-10" src="../../../images/scoopscore/icecream/ice_cream_id_10.png" class="tier-image" draggable="true">
+            <img id="ice-cream-11" src="../../../images/scoopscore/icecream/ice_cream_id_11.png" class="tier-image" draggable="true">
+            <img id="ice-cream-12" src="../../../images/scoopscore/icecream/ice_cream_id_12.png" class="tier-image" draggable="true">
+            <img id="ice-cream-13" src="../../../images/scoopscore/icecream/ice_cream_id_13.png" class="tier-image" draggable="true">
+            <img id="ice-cream-14" src="../../../images/scoopscore/icecream/ice_cream_id_14.png" class="tier-image" draggable="true">
         </div>
     </div>
 
-    <div class="image-row">
-        <img src="../../../images/scoopscore/icecream/chocolate.png" alt="Chocolate" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/cookiedough.png" alt="Cookie dough" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/strawberry.png" alt="Strawberry" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/vanilla.png" alt="Vanilla" class="tier-image">
-    </div>
 </div>
+
+<script src="../../../SSJavaScript/DragNDrop.js"></script>
 </body>
 </html>

@@ -17,29 +17,26 @@ public class RankListMapper
     public static List<RankList> getAllPublicRankList(boolean isPublic, ConnectionPool connectionPool) throws DatabaseException
     {
         List<RankList> rankLists = new ArrayList<>();
-        String sql = "SELECT * FROM ss_rank_list WHERE is_public=true";
+        String sql = "SELECT * FROM ss_rank_list WHERE is_public =true";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql);
-                )
+        )
         {
-            ps.setBoolean(1, isPublic);
             ResultSet rs = ps.executeQuery();
-            while(rs.next())
+            while (rs.next())
             {
-                ArrayList<RankListItem> rankListItemPerUser = new ArrayList<>();
+                List<RankListItem> rankListItemPerUser;
                 int id = rs.getInt("id");
                 int user_id = rs.getInt("user_id");
                 String title = rs.getString("title");
                 String description = rs.getString("description");
                 boolean is_public = rs.getBoolean("is_public");
-                //TODO getRankListItems from user_id
-//                rankListItemPerUser = RankListItemMapper.getRankListItems();
+                rankListItemPerUser = RankListItemMapper.getAllRankListItemPerUser(user_id, connectionPool);
                 rankLists.add(new RankList(id, user_id, title, description, is_public, rankListItemPerUser));
             }
-        }
-        catch (SQLException e)
+        } catch (SQLException e)
         {
             throw new DatabaseException("Fejl!", e.getMessage());
         }

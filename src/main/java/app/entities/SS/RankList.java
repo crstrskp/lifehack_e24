@@ -1,6 +1,7 @@
 package app.entities.SS;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RankList {
 
@@ -10,9 +11,9 @@ public class RankList {
     private String description;
     private boolean is_public;
 
-    private ArrayList<RankListItem>items;
+    private List<RankListItem>items;
 
-    public RankList(int id, int user_id, String title, String description, boolean is_public, ArrayList<RankListItem> items) {
+    public RankList(int id, int user_id, String title, String description, boolean is_public, List<RankListItem> items) {
         this.id = id;
         this.user_id = user_id;
         this.title = title;
@@ -25,7 +26,7 @@ public class RankList {
         this.items.add(item);
     }
 
-    public ArrayList<RankListItem> getItems() {
+    public List<RankListItem> getItems() {
         return items;
     }
 
