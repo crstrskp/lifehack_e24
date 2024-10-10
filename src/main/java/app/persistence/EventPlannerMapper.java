@@ -1,13 +1,18 @@
 package app.persistence;
 
+import app.entities.EventPlanner;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventPlannerMapper {
 
-    public static void createEvent(User owner, String dateAndTime, String location, String title, String decription, ConnectionPool connectionPool) throws DatabaseException {
+    public static EventPlanner createEvent(User owner, String dateAndTime, String location, String title, String decription, ConnectionPool connectionPool) throws DatabaseException {
+
+        EventPlanner newEvent = null;
         String sql = "insert into eventplanner (owner_id, dateandtime, location, title, description, is_owner) values (?,?,?,?,?,true)";
 
         try (
@@ -21,16 +26,24 @@ public class EventPlannerMapper {
             ps.setString(5, decription);
 
             int rowsAffected = ps.executeUpdate();
-            if (rowsAffected != 1) {
-                throw new DatabaseException("Fejl ved oprettelse af event");
+            if (rowsAffected == 1) {
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    int newId = rs.getInt(1);
+                    newEvent = new EventPlanner(newId, owner, dateAndTime, location, title, decription);
+                }
+            } else {
+                throw new DatabaseException("Error creating event");
             }
-        } catch (SQLException e) {
-            String msg = "Der er sket en fejl. Prøv igen";
-            if (e.getMessage().startsWith("ERROR: duplicate key value ")) {
-                msg = "Eventet findes allerede. Vælg et andet";
+        }catch (SQLException e) {
+            String msg ="An error occurred while creating event, try again";
+            if (e.getMessage().startsWith("ERROR: duplicate key value violates unique constraint")) {
+                msg = "Event already exists, chose another name";
             }
             throw new DatabaseException(msg, e.getMessage());
         }
+        return newEvent;
+
     }
 
     public static boolean isEventOwner(int eventId, int userId, ConnectionPool connectionPool) throws DatabaseException {
