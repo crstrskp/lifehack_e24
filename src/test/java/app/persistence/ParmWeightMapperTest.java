@@ -1,5 +1,6 @@
 package app.persistence;
 
+import app.entities.ParmWeightDTO;
 import app.exceptions.DatabaseException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -53,7 +55,7 @@ class ParmWeightMapperTest {
 
                 // Insert rows into parmweight
                 stmt.execute("INSERT INTO testparm.parmweight (user_id, weight, date) VALUES " +
-                        "(1, 75.5, '2024-10-02 08:30:00'), " +
+                        "(1, 75.0, '2024-10-02 08:30:00'), " +
                         "(1, 76.0, '2024-10-03 08:30:00'), " +
                         "(2, 85.0, '2024-10-01 09:00:00'), " +
                         "(3, 90.3, '2024-09-30 07:45:00')");
@@ -70,17 +72,27 @@ class ParmWeightMapperTest {
 
 
 
-//    @Test
-//    void getAllWeightPerUser() {
-//    }
+    @Test
+    void getAllWeightPerUser() throws DatabaseException {
+        ArrayList<ParmWeightDTO> parmWeightDTOs = new ArrayList<>();
+
+        parmWeightDTOs = ParmWeightMapper.getAllWeightPerUser(1, connectionPool);
+
+        assertEquals(2, parmWeightDTOs.size());
+
+        assertEquals(75.0, parmWeightDTOs.get(0).getWeight());
+    }
 
     @Test
     void addWeight() throws DatabaseException {
-
         assertTrue(ParmWeightMapper.addWeight(1,80, connectionPool));
     }
 
 //    @Test
-//    void getAverageWeightPastWeek() {
+//    void getAverageWeightPastWeek() throws DatabaseException {
+//        double expected = 75.5;
+//        double actual = ParmWeightMapper.getAverageWeightPastWeek(1,connectionPool);
+//
+//        assertEquals(expected, actual);
 //    }
 }

@@ -65,10 +65,11 @@ public class ParmWeightMapper {
         return result;
     }
 
-    public static float getAverageWeightPastWeek(int user_id, ConnectionPool connectionPool) throws DatabaseException {
+    // TODO find fejl i hvordan den regner avg
+    public static double getAverageWeightPastWeek(int user_id, ConnectionPool connectionPool) throws DatabaseException {
 
         String sql = "SELECT AVG(weight) FROM public.parmweight WHERE user_id=? AND date >= (CURRENT_DATE - INTERVAL '7 days')";
-        float averageWeight = 0;
+        double averageWeight = 0.0;
 
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -78,7 +79,7 @@ public class ParmWeightMapper {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                averageWeight = rs.getFloat(1);
+                averageWeight = rs.getDouble(1);
             }
 
         } catch (SQLException e) {
