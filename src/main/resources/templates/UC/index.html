@@ -142,6 +142,7 @@
 
 
         if (response.ok) {
+            document.getElementById('table1').style.display = "block";
             const result = await response.json();
             console.log(JSON.stringify(result))
             document.getElementById('kilogramValue').innerText = result["Kilogram"];
