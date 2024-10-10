@@ -10,20 +10,20 @@
 <body>
 
 <div class="container p-5">
-    <header class="mx-auto">
+    <header class="">
         <a href="../index.html" th:href="@{/}">
-            <img alt="logo" src="../../public/images/8ball-logo.png" th:src="@{/images/8ball-logo.png}"/>
+            <img alt="logo" class="img-fluid" src="../../public/images/motivationLogoWide.png" th:src="@{/images/motivationLogoWide.png}"/>
         </a>
     </header>
-    <h1 class="mx-auto">Motivational Quotes</h1>
-    <div class="card mx-auto motivation">
-        <div class="card-body">
-            <h5 class="card-title">Få et tilfældigt citat vist neden for</h5>
-            <p class="card-text" th:if="${motivation != null}" th:text="${motivation.motivationText}"></p>
+    <h1 class="mb-3">Motivational Quotes</h1>
+    <div class="card mb-5 motivation">
+        <div class="card-body" th:if="${motivation != null}">
+            <h5 class="card-title" th:text="${motivation.motivationTitle}">Få et tilfældigt citat vist neden for</h5>
+            <p class="card-text" th:text="${motivation.motivationText}"></p>
             <a th:href="@{/motivational}" href="/motivational.html" class="btn btn-primary m-3">Giv mig motivation</a>
             <button th:if="${#ctx.session.currentUser != null}" class="btn btn-primary" type="submit" name="favorites-id" formaction="/favorites" value="${motivation.motivationId}">Gem denne motivation</button>
-            </div>
         </div>
+    </div>
 
 
     <h4> Log ind og upload dit eget </h4>
