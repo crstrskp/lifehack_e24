@@ -87,7 +87,7 @@ CREATE TABLE public.ss_rank_list_item (
                                           id SERIAL PRIMARY KEY,
                                           rank_list_id INT NOT NULL,
                                           ice_cream_id INT NOT NULL,
-                                          tier CHAR(1) CHECK (tier IN ('S', 'A', 'B', 'C', 'D', 'E', 'F')),
+                                          tier VARCHAR(1) CHECK (tier IN ('S', 'A', 'B', 'C', 'D', 'E', 'F')),
                                           position INT,
                                           CONSTRAINT fk_rank_list
                                               FOREIGN KEY(rank_list_id)
