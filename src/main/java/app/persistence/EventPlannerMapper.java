@@ -74,10 +74,10 @@ public class EventPlannerMapper {
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1) {
-                throw new DatabaseException("Fejl ved sletning af event");
+                throw new DatabaseException("Error deleting event");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Der er sket en fejl. Prøv igen", e.getMessage());
+            throw new DatabaseException("An error occurred with the database, try again", e.getMessage());
         }
     }
 
@@ -93,10 +93,10 @@ public class EventPlannerMapper {
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1) {
-                throw new DatabaseException("Fejl ved forlade event");
+                throw new DatabaseException("Error leaving event");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Der er sket en fejl. Prøv igen", e.getMessage());
+            throw new DatabaseException("An error occurred with the database, try again", e.getMessage());
         }
     }
 
@@ -112,10 +112,10 @@ public class EventPlannerMapper {
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1) {
-                throw new DatabaseException("Fejl ved at joine event");
+                throw new DatabaseException("Error joining event");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Der er sket en fejl. Prøv igen", e.getMessage());
+            throw new DatabaseException("An error occurred with the database, try again", e.getMessage());
         }
     }
 
@@ -136,7 +136,7 @@ public class EventPlannerMapper {
                 eventList.add(new EventPlanner(dateAndTime, location, title, description));
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Fejl!!!!", e.getMessage());
+            throw new DatabaseException("An error occurred with the database, try again", e.getMessage());
         }
         return eventList;
     }
@@ -153,7 +153,7 @@ public class EventPlannerMapper {
             ResultSet rs = ps.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            throw new DatabaseException("Database error", e.getMessage());
+            throw new DatabaseException("An error occurred with the database, try again", e.getMessage());
         }
     }
 
