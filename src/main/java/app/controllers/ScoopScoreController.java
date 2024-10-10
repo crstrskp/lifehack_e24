@@ -25,7 +25,8 @@ public class ScoopScoreController
 
     public static void allRankLists(Context ctx, ConnectionPool connectionPool)
     {
-        try {
+        try
+        {
             List<RankList> allRankLists = RankListMapper.getAllPublicRankList(true, connectionPool);
             ctx.attribute("allRankLists", allRankLists);
             ctx.render("/scoopscore/pages/allranklists.html");
@@ -36,4 +37,4 @@ public class ScoopScoreController
         }
     }
 
-}
+    }

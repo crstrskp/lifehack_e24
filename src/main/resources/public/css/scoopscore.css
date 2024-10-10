@@ -157,3 +157,15 @@ td, th {
 thead {
     background-color: #bbbebf;
 }
+
+button[type=submit] {
+    font-size: 4em;
+    width: 50%;
+    background-color: aliceblue;
+    text-align: center;
+    border-radius: 5px;
+}
+
+button[type=submit]:hover {
+    transform: scale(1.1);
+}
