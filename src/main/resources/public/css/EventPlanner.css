@@ -1,0 +1,9 @@
+.card {
+    margin: 0; /* Remove margin from the card */
+    padding: 0; /* Remove padding from the card */
+}
+
+.card-body {
+    padding: 0; /* Remove padding from the card body */
+    margin: 0; /* Remove margin from the card body */
+}
