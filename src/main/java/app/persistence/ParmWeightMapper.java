@@ -21,7 +21,7 @@ public class ParmWeightMapper {
         ArrayList<ParmWeightDTO> parmWeightDTOs = new ArrayList<>();
         String sql = "select * from public.parmweight " +
                      "where user_id=? " +
-                     "ORDER BY CustomerName DESC";
+                     "ORDER BY weight_id DESC";
 
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
