@@ -1,83 +1,65 @@
-/*document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const images = document.querySelectorAll('.tier-image');
-    const dropZone = document.querySelector('.drop-zone');
+    const dropZones = document.querySelectorAll('.drop-zone');
+
 
     images.forEach(image => {
-        image.addEventListener('dragstart', dragStart);
-        image.addEventListener('dragend', dragEnd);
+        image.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('text/plain', image.id);
+            setTimeout(() => {
+                e.target.classList.add('dragging');
+                console.log(`Started dragging image with ID: ${image.id}`);
+            }, 0);
+        });
+
+        image.addEventListener('dragend', (e) => {
+            e.target.classList.remove('dragging');
+            console.log(`Finished dragging image with ID: ${image.id}`);
+        });
     });
 
-    function dragStart(event) {
-        event.target.classList.add('dragging');
-        event.dataTransfer.setData('text/plain', event.target.id);
-    }
+    dropZones.forEach(zone => {
+        zone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            console.log(`Dragging over drop zone: ${zone.id}`);
+        });
 
-    function dragEnd(event) {
-        event.target.classList.remove('dragging');
-    }
+        zone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const imageId = e.dataTransfer.getData('text/plain');
+            console.log(`Dropped image with ID: ${imageId}`);
+            const draggedImage = document.getElementById(imageId);
 
-    // Prevent default behavior for dragover to allow drop
-    dropZone.addEventListener('dragover', function(event) {
-        event.preventDefault(); // Prevent default to allow dropping
-    });
 
-    // Handle drop event in the designated drop zone
-    dropZone.addEventListener('drop', function(event) {
-        event.preventDefault(); // Prevent default behavior (open as link for some elements)
-        const draggedImageId = event.dataTransfer.getData('text/plain');
-        const draggedImage = document.getElementById(draggedImageId);
+            if (!draggedImage) {
+                console.error(`Image with ID ${imageId} not found.`);
+                return;
+            }
 
-        if (draggedImage) {
-            const dropX = event.clientX - draggedImage.width / 2;
-            const dropY = event.clientY - draggedImage.height / 2;
-            draggedImage.style.position = 'absolute';
-            draggedImage.style.left = `${dropX}px`;
-            draggedImage.style.top = `${dropY}px`;
-            dropZone.appendChild(draggedImage);
-            draggedImage.classList.remove('dragging');
-        }
-    });
-});*/
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('.tier-image');
-    const dropZone = document.querySelector('.drop-zone');
 
-    images.forEach(image => {
-        image.addEventListener('dragstart', dragStart);
-        image.addEventListener('dragend', dragEnd);
-    });
+            const targetImage = e.target.closest('.tier-image');
 
-    function dragStart(event) {
-        event.target.classList.add('dragging');
-        event.dataTransfer.setData('text/plain', event.target.id);
-    }
+            if (targetImage) {
 
-    function dragEnd(event) {
-        event.target.classList.remove('dragging');
-    }
+                const targetParent = targetImage.parentNode;
 
-    // Prevent default behavior for dragover to allow drop
-    dropZone.addEventListener('dragover', function(event) {
-        event.preventDefault(); // Prevent default to allow dropping
-    });
 
-    // Handle drop event in the designated drop zone
-    dropZone.addEventListener('drop', function(event) {
-        event.preventDefault(); // Prevent default behavior (open as link for some elements)
-        const draggedImageId = event.dataTransfer.getData('text/plain');
-        const draggedImage = document.getElementById(draggedImageId);
+                if (targetParent === draggedImage.parentNode) {
 
-        if (draggedImage) {
-            const dropX = event.clientX - draggedImage.width / 2;
-            const dropY = event.clientY - draggedImage.height / 2;
+                    targetParent.insertBefore(draggedImage, targetImage);
+                    targetParent.insertBefore(targetImage, draggedImage.nextSibling);
+                    console.log(`Swapped images: ${draggedImage.id} and ${targetImage.id}`);
+                } else {
 
-            // Set the style for positioning in the drop zone
-            draggedImage.style.position = 'absolute'; // Set to absolute
-            draggedImage.style.left = `${dropX}px`; // Set left position
-            draggedImage.style.top = `${dropY}px`; // Set top position
+                    zone.appendChild(draggedImage);
+                    console.log(`Moved image: ${draggedImage.id} to drop zone: ${zone.id}`);
+                }
+            } else {
 
-            // Remove the dragged image from its original position and add it to the drop zone
-            dropZone.appendChild(draggedImage);
-        }
+                zone.appendChild(draggedImage);
+                console.log(`Dropped image: ${draggedImage.id} into empty drop zone: ${zone.id}`);
+            }
+        });
     });
 });
+
