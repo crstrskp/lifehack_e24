@@ -35,15 +35,14 @@ public class EventPlannerMapper {
             } else {
                 throw new DatabaseException("Error creating event");
             }
-        }catch (SQLException e) {
-            String msg ="An error occurred while creating event, try again";
+        } catch (SQLException e) {
+            String msg = "An error occurred while creating event, try again";
             if (e.getMessage().startsWith("ERROR: duplicate key value violates unique constraint")) {
                 msg = "Event already exists, chose another name";
             }
             throw new DatabaseException(msg, e.getMessage());
         }
         return newEvent;
-
     }
 
     public static boolean isEventOwner(int eventId, int userId, ConnectionPool connectionPool) throws DatabaseException {
@@ -82,7 +81,7 @@ public class EventPlannerMapper {
         }
     }
 
-    public static void leaveEvent (int eventId, User user, ConnectionPool connectionPool) throws DatabaseException {
+    public static void leaveEvent(int eventId, User user, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "delete from event_participants where event_id=? and user_id=?";
 
         try (
@@ -100,7 +99,8 @@ public class EventPlannerMapper {
             throw new DatabaseException("Der er sket en fejl. Prøv igen", e.getMessage());
         }
     }
-    public static void joinEvent (int eventId, User user, ConnectionPool connectionPool) throws DatabaseException {
+
+    public static void joinEvent(int eventId, User user, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "INSERT INTO event_participants (event_id, user_id) VALUES (?,?)";
 
         try (
@@ -119,33 +119,28 @@ public class EventPlannerMapper {
         }
     }
 
-    public static List<EventPlanner> getAllEvents(String eventDate, ConnectionPool connectionPool) throws DatabaseException
-    {
+    public static List<EventPlanner> getAllEvents(String eventDate, ConnectionPool connectionPool) throws DatabaseException {
         List<EventPlanner> eventList = new ArrayList<>();
         String sql = "select * from eventplanner order by dateandtime";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
-        )
-        {
-            ps.setString(1, eventDate);
+        ) {
             ResultSet rs = ps.executeQuery();
-            while (rs.next())
-            {
+            while (rs.next()) {
                 String dateAndTime = rs.getString("dateandtime");
                 String location = rs.getString("location");
                 String title = rs.getString("title");
                 String description = rs.getString("description");
                 eventList.add(new EventPlanner(dateAndTime, location, title, description));
             }
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new DatabaseException("Fejl!!!!", e.getMessage());
         }
         return eventList;
     }
+
     public static boolean isUserParticipant(int eventId, int userId, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "SELECT * FROM users_events WHERE event_id = ? AND user_id = ?";
 
