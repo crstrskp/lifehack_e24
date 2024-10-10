@@ -21,22 +21,31 @@
 
     <h1>Event Planner</h1>
 
-    <div class="mb-3">
-        <label for="formGroupExampleInput" class="form-label">Example label</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-    </div>
-    <div class="mb-3">
-        <label for="formGroupExampleInput2" class="form-label">Another label</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
-    </div>
-    <div class="mb-3">
-        <label for="formGroupExampleInput" class="form-label">Example label</label>
-        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Example input placeholder">
-    </div>
-    <div class="input-group">
-        <span class="input-group-text">With textarea</span>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-    </div>
+    <form method="post">
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Date and time</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example: 17/10 18:00">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Where</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Example: Skolen">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Title</label>
+            <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Example: Brætspil">
+        </div>
+        <div class="input-group">
+            <span class="input-group-text">Description</span>
+            <textarea class="form-control" aria-label="With textarea"
+                      placeholder="A small description of your event (max 250 char)"></textarea>
+        </div>
+
+        <div class="input-group mt-3 d-flex ms-auto">
+            <button class="btn btn-success btn-outline-success text-light" style="width: max(50vw)" type="submit"
+                    formaction="createevent">Create event
+            </button>
+        </div>
+    </form>
 
 
 </div>
