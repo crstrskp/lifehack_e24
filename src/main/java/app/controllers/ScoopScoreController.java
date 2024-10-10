@@ -32,7 +32,7 @@ public class ScoopScoreController
         } catch (DatabaseException e)
         {
             ctx.attribute("message", e.getMessage());
-            ctx.render("/scoopscore/index.html");
+            ctx.render("../index.html");
         }
     }
 
