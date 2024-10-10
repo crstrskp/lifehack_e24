@@ -18,7 +18,7 @@ public class RankListItemMapper
 
     public static List<RankListItem> getAllRankListItemPerUser(int user_id, ConnectionPool connectionPool) throws DatabaseException
     {
-        List<RankListItem> rankListItemList = new ArrayList<RankListItem>();
+        List<RankListItem> rankListItemList = new ArrayList<>();
         String sql = "select * from \"ss_rank_list_item\" ";
 
         try (Connection connection = connectionPool.getConnection();

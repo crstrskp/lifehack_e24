@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-    /*background-color: powderblue;*/
     color: white;
     text-align: center;
     margin: 0;
@@ -20,7 +19,6 @@ header a {
 header a img {
     width: 40%;
 }
-
 
 .tier-list {
     display: flex;
@@ -48,29 +46,12 @@ header a img {
     font-weight: bold;
 }
 
-#s-tier .tier-label {
-    background-color: #FF6B6B;
-}
-
-#a-tier .tier-label {
-    background-color: #FFA45B;
-}
-
-#b-tier .tier-label {
-    background-color: #FFD371;
-}
-
-#c-tier .tier-label {
-    background-color: #E0E100;
-}
-
-#d-tier .tier-label {
-    background-color: #A7E080;
-}
-
-#f-tier .tier-label {
-    background-color: #80E0A7;
-}
+#s-tier .tier-label { background-color: #FF6B6B; }
+#a-tier .tier-label { background-color: #FFA45B; }
+#b-tier .tier-label { background-color: #FFD371; }
+#c-tier .tier-label { background-color: #E0E100; }
+#d-tier .tier-label { background-color: #A7E080; }
+#f-tier .tier-label { background-color: #80E0A7; }
 
 .tier-cells {
     flex-grow: 1;
@@ -99,3 +80,28 @@ header a img {
 .tier-image:hover {
     transform: scale(1.1);
 }
+
+.dragging {
+    opacity: 0.5; /* Lower opacity while dragging */
+}
+
+/* Drop zone styling */
+.drop-zone {
+    border: 2px dashed #ccc; /* Dashed border for visual indication */
+    padding: 20px; /* Some padding for better visual appearance */
+    height: 300px; /* Increased height for the drop zone */
+    width: 200px; /* Set a width for the drop zone */
+    position: fixed; /* Fix it at a specific position in the viewport */
+    bottom: 20px; /* Align to the bottom with a 20px margin */
+    right: 20px; /* Align to the right with a 20px margin */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    text-align: center; /* Center text within the drop zone */
+    display: flex; /* Flexbox to center content */
+    align-items: flex-start; /* Align items to the start vertically */
+    justify-content: center; /* Center content horizontally */
+    overflow: auto; /* Allow scrolling if needed */
+    z-index: 1000; /* Ensure it appears above other content */
+    position: relative; /* Set relative positioning for children */
+}
+
+
