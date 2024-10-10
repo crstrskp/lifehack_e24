@@ -108,7 +108,13 @@ public class MotivationMapper {
         }
         catch (SQLException e)
         {
-            throw new DatabaseException("Could not create user in the database");
+            String msg;
+            if (e.getMessage().contains("ERROR: duplicate key")) {
+                msg = "Du har allerede markeret denne som favorit";
+            } else {
+                msg = e.getMessage();
+            }
+            throw new DatabaseException(msg);
         }
     }
 
