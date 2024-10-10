@@ -105,6 +105,12 @@ header a img {
     margin: 20px;
 }
 
+.ice-cream-row {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
 .tier-image {
     width: 100px;
     height: 100px;
