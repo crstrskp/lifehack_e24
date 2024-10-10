@@ -15,4 +15,6 @@ public class ParmWeightDTO {
         this.date = date;
     }
     public float getWeight() { return weight; }
+    public Date getDate() { return date; }
+
 }
