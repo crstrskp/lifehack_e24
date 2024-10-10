@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>unauthorized</title>
@@ -18,7 +18,7 @@
         </a>
     </header>
 
-    <h1>Hovsa du kan ikke bruge appen før du er logget ind!</h1>
+    <h1 th:text="${errorMessage}"></h1>
 
 </div>
 

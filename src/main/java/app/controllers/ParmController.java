@@ -20,6 +20,14 @@ public class ParmController {
     private static void showPage(Context ctx, ConnectionPool connectionPool) {
 
         User currentUser = ctx.sessionAttribute("currentUser");
+
+        if (currentUser == null) {
+            ctx.attribute("errorMessage", "Please log in, in order to use this app.");
+            ctx.render("/parm/error.html");
+            return;
+        }
+
+
         int user_id = currentUser.getUserId();
 
         try {
@@ -30,7 +38,10 @@ public class ParmController {
 
             ctx.attribute("weightList", weightList);
             ctx.render("/parm/index.html");
+
         } catch (DatabaseException e) {
+            ctx.attribute("errorMessage", "There was a problem retrieving your weight data. Please try again later.");
+            ctx.render("/parm/error.html");
             throw new RuntimeException(e);
         }
 
@@ -50,6 +61,8 @@ public class ParmController {
             showPage(ctx, connectionPool);
 
         } catch (DatabaseException e) {
+            ctx.attribute("errorMessage", "There was a problem submitting your weight data. Please try again later.");
+            ctx.render("/parm/error.html");
             throw new RuntimeException(e);
         }
 
