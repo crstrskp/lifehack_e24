@@ -17,7 +17,7 @@ public class IceCreamMapper
     {
 
         List<SSIceCream> iceCreamList = new ArrayList<>();
-        String sql = "SELECT * FROM ice_creams";
+        String sql = "SELECT * FROM ss_ice_cream";
 
         try (
                 Connection connection = connectionPool.getConnection();
