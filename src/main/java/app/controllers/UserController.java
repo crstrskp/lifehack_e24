@@ -16,7 +16,6 @@ public class UserController
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> createUser(ctx, connectionPool));
     }
-
     private static void createUser(Context ctx, ConnectionPool connectionPool)
     {
         // Hent form parametre
