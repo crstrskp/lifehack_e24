@@ -22,13 +22,13 @@ public class RankListMapper
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql);
-                )
+        )
         {
             ps.setBoolean(1, isPublic);
             ResultSet rs = ps.executeQuery();
-            while(rs.next())
+            while (rs.next())
             {
-                List<RankListItem> rankListItemPerUser = new ArrayList<>();
+                List<RankListItem> rankListItemPerUser;
                 int id = rs.getInt("id");
                 int user_id = rs.getInt("user_id");
                 String title = rs.getString("title");
@@ -37,8 +37,7 @@ public class RankListMapper
                 rankListItemPerUser = RankListItemMapper.getAllRankListItemPerUser(user_id, connectionPool);
                 rankLists.add(new RankList(id, user_id, title, description, is_public, rankListItemPerUser));
             }
-        }
-        catch (SQLException e)
+        } catch (SQLException e)
         {
             throw new DatabaseException("Fejl!", e.getMessage());
         }

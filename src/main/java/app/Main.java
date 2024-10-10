@@ -31,6 +31,7 @@ public class Main
 
         // Routing
         app.get("/", ctx -> ctx.render("index.html"));
+        app.post("/allRankLists", ctx -> ScoopScoreController.allRankLists(ctx, connectionPool));
 
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app);

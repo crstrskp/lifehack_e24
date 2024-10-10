@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     /*background-color: powderblue;*/
-    color: white;
+    /*color: white;*/
     text-align: center;
     margin: 0;
     padding: 0;
@@ -81,7 +81,7 @@ header a img {
     border-radius: 5px;
 }
 
-.image-row {
+.ice-cream-images {
     display: flex;
     justify-content: center;
     margin: 20px;
