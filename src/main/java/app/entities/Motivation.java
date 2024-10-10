@@ -2,11 +2,11 @@ package app.entities;
 
 public class Motivation
 {
-    private String motivationTitle;
-    private String  motivationText;
-    private String  imageURL;
-    private int motivationId;
-    private int authorId;
+    private final String motivationTitle;
+    private final String  motivationText;
+    private final String  imageURL;
+    private final int motivationId;
+    private final int authorId;
 
     public Motivation(int motivationId, String motivationTitle, String motivationText, String imageURL, int authorId)
     {
