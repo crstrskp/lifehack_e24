@@ -4,7 +4,6 @@ import app.entities.SS.RankList;
 import app.entities.SS.RankListItem;
 import app.exceptions.DatabaseException;
 import app.persistence.ConnectionPool;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,8 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RankListMapper
-{
+public class RankListMapper {
     public static List<RankList> getAllPublicRankList(boolean isPublic, ConnectionPool connectionPool) throws DatabaseException
     {
         List<RankList> rankLists = new ArrayList<>();
@@ -25,8 +23,7 @@ public class RankListMapper
         )
         {
             ResultSet rs = ps.executeQuery();
-            while (rs.next())
-            {
+            while (rs.next()) {
                 List<RankListItem> rankListItemPerUser;
                 int id = rs.getInt("id");
                 int user_id = rs.getInt("user_id");
@@ -36,7 +33,8 @@ public class RankListMapper
                 rankListItemPerUser = RankListItemMapper.getAllRankListItemPerUser(user_id, connectionPool);
                 rankLists.add(new RankList(id, user_id, title, description, is_public, rankListItemPerUser));
             }
-        } catch (SQLException e)
+        }
+        catch (SQLException e)
         {
             throw new DatabaseException("Fejl!", e.getMessage());
         }

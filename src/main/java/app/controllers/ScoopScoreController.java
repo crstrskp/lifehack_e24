@@ -11,8 +11,7 @@ import io.javalin.http.Context;
 
 import java.util.List;
 
-public class ScoopScoreController
-{
+public class ScoopScoreController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool)
     {
         app.get("/scoopscore", ctx -> index(ctx, connectionPool));
@@ -25,16 +24,13 @@ public class ScoopScoreController
 
     public static void allRankLists(Context ctx, ConnectionPool connectionPool)
     {
-        try
-        {
+        try {
             List<RankList> allRankLists = RankListMapper.getAllPublicRankList(true, connectionPool);
             ctx.attribute("allRankLists", allRankLists);
             ctx.render("/scoopscore/pages/allranklists.html");
-        } catch (DatabaseException e)
-        {
+        } catch (DatabaseException e) {
             ctx.attribute("message", e.getMessage());
             ctx.render("../index.html");
         }
     }
-
-    }
+}

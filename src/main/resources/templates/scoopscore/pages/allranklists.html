@@ -7,6 +7,7 @@
     <link href="../../../css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
     <link href="../../../css/scoopscore.css" th:href="@{/css/scoopscore.css}" rel="stylesheet"/>
 </head>
+
 <body>
 <div class="page">
     <header>
@@ -27,7 +28,7 @@
         </thead>
         <tbody>
 
-        <tr th:unless="${allRankLists==null}"  th:each="ranklist: ${allRankLists}">
+        <tr th:unless="${allRankLists==null}" th:each="ranklist: ${allRankLists}">
             <td th:text="${ranklist.user_id}"></td>
             <td th:text="${ranklist.title}"></td>
         </tr>
