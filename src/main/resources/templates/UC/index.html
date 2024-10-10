@@ -24,24 +24,66 @@
     <p>Unit Conversion Tool</p>
 
     <div class="converter">
-        <label for="value">Enter Value:</label>
-        <input type="number" id="value" placeholder="Enter a number" />
+        <form id="weightForm">
+            <label for="weight">Enter Value:</label>
+            <input type="number" name="weight" id="weight" placeholder="Enter a number" />
 
-        <label for="unit">Select Unit:</label>
-        <select id="unit">
-            <option value="kilogram">Kilogram</option>
-            <option value="gram">Gram</option>
-            <option value="metric ton">Metric Ton</option>
-            <option value="long ton">Long Ton</option>
-            <option value="short ton">Short Ton</option>
-            <option value="pound">Pound</option>
-            <option value="ounce">Ounce</option>
-        </select>
+            <label for="unit">Select Unit:</label>
+            <select name="unit" id="unit">
+                <option value="Kilogram">Kilogram</option>
+                <option value="Gram">Gram</option>
+                <option value="Metric ton">Metric Ton</option>
+                <option value="Long ton">Long Ton</option>
+                <option value="Short ton">Short Ton</option>
+                <option value="Pound">Pound</option>
+                <option value="Ounce">Ounce</option>
+            </select>
 
-        <button type="button">Convert</button> <!-- Remove onclick if no JS is present -->
+            <button type="submit">Convert</button>
+        </form>
     </div>
 
-    <table>
+    <table id="table1" style="display: none">
+        <thead>
+        <tr>
+            <th>Unit</th>
+            <th>Converted Value</th>
+        </tr>
+        </thead>
+        <tbody id="conversionTable">
+        <tr>
+            <td>Kilogram</td>
+            <td id="kilogramValue"></td>
+        </tr>
+        <tr>
+            <td>Gram</td>
+            <td id="gramValue"></td>
+        </tr>
+        <tr>
+            <td>Metric Ton</td>
+            <td id="metricTonValue"></td>
+        </tr>
+        <tr>
+            <td>Long Ton</td>
+            <td id="longTonValue"></td>
+        </tr>
+        <tr>
+            <td>Short Ton</td>
+            <td id="shortTonValue"></td>
+        </tr>
+        <tr>
+            <td>Pound</td>
+            <td id="poundValue"></td>
+        </tr>
+        <tr>
+            <td>Ounce</td>
+            <td id="ounceValue"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <table id="table2" style="display: none">
         <thead>
         <tr>
             <th>Unit</th>
@@ -82,5 +124,37 @@
 
 </div>
 
+<script>
+    document.getElementById('unit').addEventListener("change", function() {
+        document.getElementById('table1').style.display = "block";
+    });
+
+
+    document.getElementById('weightForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        const response = await fetch('/convertWeight', {
+            method: 'POST',
+            body: formData
+        });
+
+
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log(JSON.stringify(result))
+            document.getElementById('kilogramValue').innerText = result["Kilogram"];
+            document.getElementById('gramValue').innerText = result["Gram"];
+            document.getElementById('metricTonValue').innerText = result["Metric Ton"];
+            document.getElementById('longTonValue').innerText = result["Long Ton"];
+            document.getElementById('shortTonValue').innerText = result["Short Ton"];
+            document.getElementById('poundValue').innerText = result["Pound"];
+            document.getElementById('ounceValue').innerText = result["Ounce"];
+        } else {
+            document.getElementById('result').innerText = 'Error occurred while converting weight.';
+        }
+    });
+</script>
 </body>
 </html>

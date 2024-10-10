@@ -1,14 +1,24 @@
 package app;
 
+import io.javalin.Javalin;
+import io.javalin.http.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class WeightConversion {
 
 
-    public static Map<String, Double> convertWeight(double weight, String unit) {
-        double kg = convertToKilograms(weight, unit);
 
+    public static void addRoutes(Javalin app) {
+        app.post("convertWeight", ctx -> convertWeight(ctx));
+    }
+
+
+    public static Map<String, Double> convertWeight(Context ctx) {
+        double weight = Double.parseDouble(ctx.formParam("weight"));
+        String unit = ctx.formParam("unit");
+        double kg = convertToKilograms(weight, unit);
         Map<String, Double> conversions = new HashMap<>();
         conversions.put("Kilogram", kg);
         conversions.put("Gram", kgToGrams(kg));
@@ -18,6 +28,8 @@ public class WeightConversion {
         conversions.put("Pound", kgToPounds(kg));
         conversions.put("Ounce", kgToOunces(kg));
 
+
+        ctx.json(conversions);
         return conversions;
     }
 
