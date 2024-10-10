@@ -16,95 +16,45 @@
         </a>
     </header>
     <p>My rank list goes here</p>
-
     <p>Make your icecreams come true!</p>
-/**/
-    <table class="tier-list">
-        <thead>
-        <tr>
-            <div class="tier-row" id="s-tier">
-                <div class="tier-label">S</div>
-                <div class="tier-cells"></div>
-            </div>
-        </tr>
-        <tr th:each="rankList: ${#ctx.rankLists}">
-            <td th:text="${rankList.name}"></td>
-        </tr>
-        </thead>
-        <thead>
-        <tr>
-            <div class="tier-row" id="a-tier">
-                <div class="tier-label">A</div>
-                <div class="tier-cells"></div>
-            </div>
-        </tr>
-        <tr th:each="rankList: ${#ctx.rankLists}">
-            <td th:text="${rankList.name}"></td>
-        </tr>
-        </thead>
-        <thead>
-        <tr>
-            <div class="tier-row" id="b-tier">
-                <div class="tier-label">B</div>
-                <div class="tier-cells"></div>
-            </div>
-        </tr>
-        <tr th:each="rankList: ${#ctx.rankLists}">
-            <td th:text="${rankList.name}"></td>
-        </tr>
-        </thead>
-        <thead>
-        <tr>
-            <div class="tier-row" id="c-tier">
-                <div class="tier-label">C</div>
-                <div class="tier-cells"></div>
-            </div>
-        </tr>
-        <tr th:each="rankList: ${#ctx.rankLists}">
-            <td th:text="${rankList.name}"></td>
-        </tr>
-        </thead>
-        <thead>
-        <tr>
-            <div class="tier-row" id="d-tier">
-                <div class="tier-label">D</div>
-                <div class="tier-cells"></div>
-            </div>
-        </tr>
-        <tr th:each="rankList: ${#ctx.rankLists}">
-            <td th:text="${rankList.name}"></td>
-        </tr>
-        </thead>
-        <thead>
-        <tr>
-            <div class="tier-row" id="f-tier">
-                <div class="tier-label">F</div>
-                <div class="tier-cells"></div>
-            </div>
-        </tr>
-        <tr th:each="rankList: ${#ctx.rankLists}">
-            <td th:text="${rankList.name}"></td>
-        </tr>
-        </thead>
-    </table>
-    /**/
 
-    <div class="ice-cream-images">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_1.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_2.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_3.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_4.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_5.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_6.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_7.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_8.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_9.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_10.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_11.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_12.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_13.png" class="tier-image">
-        <img src="../../../images/scoopscore/icecream/ice_cream_id_14.png" class="tier-image">
+    <div class="drop-zone"></div>
+
+    <div class="tier-list">
+        <div class="tier-row" id="s-tier">
+            <div class="tier-label">S</div>
+            <div class="tier-cells"></div>
+        </div>
+        <div class="tier-row" id="a-tier">
+            <div class="tier-label">A</div>
+            <div class="tier-cells"></div>
+        </div>
+        <div class="tier-row" id="b-tier">
+            <div class="tier-label">B</div>
+            <div class="tier-cells"></div>
+        </div>
+        <div class="tier-row" id="c-tier">
+            <div class="tier-label">C</div>
+            <div class="tier-cells"></div>
+        </div>
+        <div class="tier-row" id="d-tier">
+            <div class="tier-label">D</div>
+            <div class="tier-cells"></div>
+        </div>
+        <div class="tier-row" id="f-tier">
+            <div class="tier-label">F</div>
+            <div class="tier-cells"></div>
+        </div>
+    </div>
+
+    <div class="image-row">
+        <img id="icecream-chocolate" src="../../../images/scoopscore/icecream/chocolate.png" alt="Chocolate" class="tier-image" draggable="true">
+        <img id="icecream-cookiedough" src="../../../images/scoopscore/icecream/cookiedough.png" alt="Cookie dough" class="tier-image" draggable="true">
+        <img id="icecream-strawberry" src="../../../images/scoopscore/icecream/strawberry.png" alt="Strawberry" class="tier-image" draggable="true">
+        <img id="icecream-vanilla" src="../../../images/scoopscore/icecream/vanilla.png" alt="Vanilla" class="tier-image" draggable="true">
     </div>
 </div>
+<!-- Update the script path to a static path for testing -->
+<script src="../../../SSJavaScript/DragNDrop.js"></script>
 </body>
 </html>
