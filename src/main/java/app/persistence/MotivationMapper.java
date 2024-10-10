@@ -63,7 +63,7 @@ public class MotivationMapper {
 
 
     public static Motivation getFavoriteMotivation(User user, ConnectionPool connectionPool){
-       String sql = "SELECT * FROM motivational_favorites AS f INNER JOIN motivational_quotes AS q ON f.quote_id = q.id WHERE f.user_id = ?";
+       String sql = "SELECT * FROM motivational_favorites AS f INNER JOIN motivational_quotes AS q ON f.quote_id = q.id WHERE f.user_id = ? ORDER BY RANDOM() LIMIT 1";
        String title;
        String text;
        String imageURL;
