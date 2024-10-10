@@ -71,8 +71,13 @@ public class EventPlannerController {
 
         if (currentUser != null) {
             try {
-                EventPlannerMapper.leaveEvent(eventId, currentUser, connectionPool);
-                ctx.attribute("message", "You have left the event.");
+                boolean isParticipant = EventPlannerMapper.isUserParticipant(eventId, currentUser.getUserId(), connectionPool);
+                if(isParticipant){
+                    EventPlannerMapper.leaveEvent(eventId, currentUser, connectionPool);
+                    ctx.attribute("message", "You have left the event.");
+                } else {
+                    ctx.attribute("message", "You are not a participant of this event.");
+                }
                 ctx.render("/eventplanner/index.html");
             } catch (DatabaseException e) {
                 ctx.attribute("message", "Something went wrong, Try again");
@@ -105,5 +110,4 @@ public class EventPlannerController {
             ctx.render("/eventplanner/index.html");
         }
     }
-
 }
