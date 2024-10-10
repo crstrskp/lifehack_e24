@@ -2,15 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>unauthorized</title>
+    <title>Error</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../public/css/parm/parm-styles.css" th:href="@{/css/parm/parm-styles.css}" rel="stylesheet"/>
     <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-
 </head>
 
 <body>
-
 <div class="page">
     <header>
         <a href="../index.html" th:href="@{/}">
@@ -19,8 +17,7 @@
     </header>
 
     <h1 th:text="${errorMessage}"></h1>
-
+    <a href="../index.html" th:href="@{/}">Front page</a>
 </div>
-
 </body>
 </html>
