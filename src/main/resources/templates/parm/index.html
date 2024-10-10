@@ -21,11 +21,12 @@
     <h3>Welcome, <span th:text="${session.currentUser.username}"></span></h3>
     <form class="weight" method="post">
         <label for="weight_id">Current weight:</label>
-        <input type="number" step="0.1" min="0" id="weight_id" name="weight" placeholder="Enter your current weight here!"/>
+        <input type="number" step="0.1" min="0" id="weight_id" name="weight"
+               placeholder="Enter your current weight here!"/>
 
         <div class="knappen">
 
-        <button id="knap" type="submit" th:formaction="@{/parm/}">Submit</button>
+            <button id="knap" type="submit" th:formaction="@{/parm/}">Submit</button>
         </div>
 
     </form>

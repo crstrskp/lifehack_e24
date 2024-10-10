@@ -20,8 +20,8 @@ public class ParmWeightMapper {
     public static ArrayList<ParmWeightDTO> getAllWeightPerUser(int user_id, ConnectionPool connectionPool) throws DatabaseException {
         ArrayList<ParmWeightDTO> parmWeightDTOs = new ArrayList<>();
         String sql = "select * from public.parmweight " +
-                     "where user_id=? " +
-                     "ORDER BY weight_id DESC";
+                "where user_id=? " +
+                "ORDER BY weight_id DESC";
 
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -29,13 +29,13 @@ public class ParmWeightMapper {
             ps.setInt(1, user_id);
 
             ResultSet rs = ps.executeQuery();
-           while (rs.next()) {
-               int weightId = rs.getInt("weight_id");
-               int userId = rs.getInt("user_id");
-               float weight = rs.getFloat("weight");
-               Date date = rs.getDate("date");
+            while (rs.next()) {
+                int weightId = rs.getInt("weight_id");
+                int userId = rs.getInt("user_id");
+                float weight = rs.getFloat("weight");
+                Date date = rs.getDate("date");
 
-               parmWeightDTOs.add(new ParmWeightDTO(weightId,userId,weight,date));
+                parmWeightDTOs.add(new ParmWeightDTO(weightId, userId, weight, date));
 
             }
         } catch (SQLException e) {
@@ -45,11 +45,11 @@ public class ParmWeightMapper {
     }
 
     public static Boolean addWeight(int user_id, float weight, ConnectionPool connectionPool) throws DatabaseException {
-        String sql ="INSERT INTO parmweight (user_id, weight) VALUES (?, ?)";
+        String sql = "INSERT INTO parmweight (user_id, weight) VALUES (?, ?)";
         boolean result = false;
 
-        try(Connection connection = connectionPool.getConnection();
-        PreparedStatement ps = connection.prepareStatement(sql)){
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setInt(1, user_id);
             ps.setFloat(2, weight);
@@ -57,11 +57,11 @@ public class ParmWeightMapper {
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1) {
                 throw new DatabaseException("Fejl ved oprettelse af ny vejning");
-            } else{
+            } else {
                 result = true;
             }
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException("DB fejl - fejl i at tilføje vægt", e.getMessage());
         }
         return result;
