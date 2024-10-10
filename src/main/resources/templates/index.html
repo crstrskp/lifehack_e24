@@ -31,11 +31,6 @@
                 </div>
             </div>
         </div>
-
-    <div class="contact-us-section">
-        <a class="btn btn-contact" th:href="@{gruppeg/contact}">Contact Us</a>
-    </div>
-
     <h3>If you need to log in - do it here</h3>
     <form class="generic-form" method="post">
         <input type="text" name="username" placeholder="Enter your username"/>
@@ -48,6 +43,9 @@
         <a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Logout</a>
         <span th:if="${session.currentUser != null}"> | </span>
         <a href="createuser.html" th:href="@{/createuser}">Create user</a>
+    </div>
+    <div class="contact-us-section"><br><br>
+        <a class="btn btn-contact" th:href="@{gruppeg/contact}">Contact Us</a>
     </div>
 </div>
 </body>

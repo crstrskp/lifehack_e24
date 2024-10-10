@@ -2,34 +2,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <title>Kontaktformular</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
-  <link href="../../public/css/kontaktformular.css" th:href="@{/css/kontaktformular.css}" rel="stylesheet"/>
+    <title>ContactForm</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link href="../../public/css/kontaktformular.css" th:href="@{/css/kontaktformular.css}" rel="stylesheet"/>
 </head>
 
 <body>
 
+
+<img alt="logo" src="/public/images/kontaktformlogo.png" th:src="@{/images/kontaktformlogo.png}" th:height="200" th:width="200"/>
+
+<div class="background"></div>
+
 <div class="contact-form">
-  <h2>Contact Us</h2>
 
-  <div class="error" th:if="${error}" th:text="${error}"></div>
+    <h2>Contact Us</h2>
 
-  <div class="success" th:if="${success}" th:text="${success}"></div>
+    <div class="error" th:if="${error}" th:text="${error}"></div>
 
-  <form th:action="@{/gruppeg/contact}" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+    <div class="success" th:if="${success}" th:text="${success}"></div>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+   <form th:action="@{/gruppeg/contact}" method="post">
 
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" rows="5" minlength="20" maxlength="250" required></textarea>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
 
-    <button type="submit">Send</button>
-  </form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" minlength="20" maxlength="250"></textarea>
+
+        <button type="submit">Send</button>
+    </form>
 </div>
 
 </body>
