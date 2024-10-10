@@ -43,7 +43,8 @@
                 <button type="button" class="p-2 btn btn-danger" th:onclick="'/events/delete/' + ${event.eventId}">
                     Delete
                 </button>
-                <button type="button" class="ms-auto p-2 btn btn-danger" th:onclick="'/events/leave/' + ${event.eventId}">
+                <button type="button" class="ms-auto p-2 btn btn-danger"
+                        th:onclick="'/events/leave/' + ${event.eventId}">
                     Leave
                 </button>
             </div>
@@ -54,7 +55,8 @@
 
 <footer>
     <div class="mt-4" th:if="${session.currentUser != null}">
-        <a href="/eventplanner/create" th:href="@{/eventplanner/create}" class="btn btn-success" style="width: max(35vw)">
+        <a href="/eventplanner/create" th:href="@{/eventplanner/create}" class="btn btn-success"
+           style="width: max(35vw)">
             Create Event
         </a>
     </div>
