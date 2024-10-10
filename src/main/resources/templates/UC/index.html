@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<title>Projectname</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../../public/css/styles.css" th:href="@{/css/UC.css}" rel="stylesheet"/>
-<link href="../../public/css/projectname.css" th:href="@{/css/UC.css}" rel="stylesheet"/>
+<head>
+    <title>Projectname - Unit Conversion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link href="../../public/css/UC.css" th:href="@{/css/UC.css}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -19,7 +21,51 @@
 
     <h1>Project name</h1>
 
-    <p>Make your splash page here</p>
+    <p>Unit Conversion Tool</p>
+
+    <div class="converter">
+        <label for="value">Enter Value:</label>
+        <input type="number" id="value" placeholder="Enter a number" />
+
+        <label for="unit">Select Unit:</label>
+        <select id="unit">
+            <option value="meter">Meters</option>
+            <option value="kilometer">Kilometers</option>
+            <option value="foot">Feet</option>
+            <option value="mile">Miles</option>
+        </select>
+
+        <button type="button">Convert</button> <!-- Remove onclick if no JS is present -->
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Unit</th>
+            <th>Converted Value</th>
+        </tr>
+        </thead>
+        <tbody id="conversionTable">
+        <tr>
+            <td>Meters</td>
+            <td id="meterValue"></td>
+        </tr>
+        <tr>
+            <td>Kilometers</td>
+            <td id="kilometerValue"></td>
+        </tr>
+        <tr>
+            <td>Feet</td>
+            <td id="footValue"></td>
+        </tr>
+        <tr>
+            <td>Miles</td>
+            <td id="mileValue"></td>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
+
 </body>
 </html>
