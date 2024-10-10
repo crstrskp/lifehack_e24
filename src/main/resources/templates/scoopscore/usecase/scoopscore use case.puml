@@ -1,0 +1,29 @@
+@startuml
+actor Guest
+actor User
+actor Admin as BasicAdmin
+actor "Admin (Super)" as SuperAdmin
+
+usecase "View Ice Creams" as UC_ViewIceCreams
+usecase "Create Rank List" as UC_CreateRankList
+usecase "View Rank Lists" as UC_ViewRankLists
+usecase "Vote on Rank Lists" as UC_VoteRankLists
+usecase "Publish Rank List" as UC_PublishRankList
+usecase "Add Ice Cream" as UC_AddIceCream
+usecase "Edit/Delete Ice Cream" as UC_EditDeleteIceCream
+
+Guest --> UC_ViewIceCreams
+Guest --> UC_CreateRankList
+Guest --> UC_ViewRankLists
+
+User --> UC_ViewIceCreams
+User --> UC_CreateRankList
+User --> UC_ViewRankLists
+User --> UC_VoteRankLists
+User --> UC_PublishRankList
+
+BasicAdmin --> UC_AddIceCream
+SuperAdmin --> UC_AddIceCream
+SuperAdmin --> UC_EditDeleteIceCream
+
+@enduml

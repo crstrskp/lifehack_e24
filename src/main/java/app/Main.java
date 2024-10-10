@@ -1,6 +1,7 @@
 package app;
 
 import app.config.ThymeleafConfig;
+import app.controllers.ScoopScoreController;
 import app.controllers.TimeZonesController;
 import app.controllers.UserController;
 import app.controllers.WarhammerController;
@@ -30,9 +31,11 @@ public class Main
 
         // Routing
         app.get("/", ctx -> ctx.render("index.html"));
+        app.get("allranklists", ctx -> ScoopScoreController.allRankLists(ctx, connectionPool));
 
         UserController.addRoutes(app, connectionPool);
         TimeZonesController.addRoutes(app);
         WarhammerController.addRoutes(app);
+        ScoopScoreController.addRoutes(app, connectionPool);
     }
 }
