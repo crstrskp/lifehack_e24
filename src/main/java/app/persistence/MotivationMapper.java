@@ -3,10 +3,7 @@ package app.persistence;
 import app.entities.Motivation;
 import app.entities.User;
 import app.exceptions.DatabaseException;
-
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MotivationMapper {
 
@@ -30,10 +27,6 @@ public class MotivationMapper {
         catch(SQLException e){
             throw new DatabaseException("Fejl i opkobling til DB: newMotivation/MotivationMapper");
         }
-    }
-
-    public static void deleteMotivation(int motivationId, ConnectionPool connectionPool){
-
     }
 
     public static Motivation getMotivation(ConnectionPool connectionPool) throws DatabaseException
