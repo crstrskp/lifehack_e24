@@ -1,5 +1,8 @@
 package app.entities.SS;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RankListItem {
 
     private int id;
@@ -34,6 +37,23 @@ public class RankListItem {
 
     public int getPosition() {
         return position;
+    }
+
+    public List<RankListItem> getUserRankListItemOnTier(RankList rankList, int userID, String tier)
+    {
+        List<RankListItem> itemsOnTier = new ArrayList<>();
+
+        for(RankListItem rli: rankList.getItems())
+        {
+            // Checks if the rankList belongs to the correct user
+            // and if the RankListItem has the correct tier
+            if(rankList.getUser_id() == userID && rli.getTier().equals(tier))
+            {
+                    itemsOnTier.add(rli);
+            }
+        }
+
+        return itemsOnTier;
     }
 
     @Override
