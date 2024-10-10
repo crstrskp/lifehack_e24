@@ -19,7 +19,7 @@
         </a>
     </header>
 
-    <h1>Project name</h1>
+    <h1>Unit conversion</h1>
 
     <p>Unit Conversion Tool</p>
 
@@ -29,10 +29,13 @@
 
         <label for="unit">Select Unit:</label>
         <select id="unit">
-            <option value="meter">Meters</option>
-            <option value="kilometer">Kilometers</option>
-            <option value="foot">Feet</option>
-            <option value="mile">Miles</option>
+            <option value="kilogram">Kilogram</option>
+            <option value="gram">Gram</option>
+            <option value="metric ton">Metric Ton</option>
+            <option value="long ton">Long Ton</option>
+            <option value="short ton">Short Ton</option>
+            <option value="pound">Pound</option>
+            <option value="ounce">Ounce</option>
         </select>
 
         <button type="button">Convert</button> <!-- Remove onclick if no JS is present -->
@@ -47,20 +50,32 @@
         </thead>
         <tbody id="conversionTable">
         <tr>
-            <td>Meters</td>
-            <td id="meterValue"></td>
+            <td>Kilogram</td>
+            <td id="kilogramValue"></td>
         </tr>
         <tr>
-            <td>Kilometers</td>
-            <td id="kilometerValue"></td>
+            <td>Gram</td>
+            <td id="gramValue"></td>
         </tr>
         <tr>
-            <td>Feet</td>
-            <td id="footValue"></td>
+            <td>Metric Ton</td>
+            <td id="metricTonValue"></td>
         </tr>
         <tr>
-            <td>Miles</td>
-            <td id="mileValue"></td>
+            <td>Long Ton</td>
+            <td id="longTonValue"></td>
+        </tr>
+        <tr>
+            <td>Short Ton</td>
+            <td id="shortTonValue"></td>
+        </tr>
+        <tr>
+            <td>Pound</td>
+            <td id="poundValue"></td>
+        </tr>
+        <tr>
+            <td>Ounce</td>
+            <td id="ounceValue"></td>
         </tr>
         </tbody>
     </table>
