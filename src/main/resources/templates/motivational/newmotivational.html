@@ -25,7 +25,7 @@
 
     <form class="generic-form" method="post">
         <div class="mb-3">
-            <label for="quote-title" class="form-label">Titel for dit citat</label>
+            <label for="quote-citat" class="form-label">Titel for dit citat</label>
             <input type="text" class="form-control" name="quote-title" placeholder="Skriv titlen for dit citat" id="quote-citat" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
@@ -33,7 +33,7 @@
             <input type="quote-text" class="form-control" name="quote-text" placeholder="Skriv tekst" id="quote-text">
         </div>
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
-        <button th:if="${#ctx.session.currentUser != null}" class="btn btn-primary" type="submit" formaction="/newmotivationals">Upload mit citat</button>
+        <button th:if="${#ctx.session.currentUser != null}" class="btn btn-primary" type="submit" formaction="/motivation">Upload mit citat</button>
 
 
     </form>

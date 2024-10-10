@@ -15,37 +15,14 @@ public class MotivationController {
         app.get("/motivational", ctx -> showMotivation(ctx,pool));
         app.post("/motivation", ctx -> addMotivation(ctx,pool));
         app.post("/motivational/addtofavorites", ctx -> addToFavorites(ctx, pool) );
-        app.post("/motivational/newmotivationals", ctx -> uploadNewMotivation(ctx, pool) );
 
-    }
-
-    private static void uploadNewMotivation(Context ctx, ConnectionPool connectionPool)
-    {
-        String quoteTitle = ctx.formParam("quote-title");
-        String quoteText = ctx.formParam("quote-text");
-
-        User quoteAuthor = ctx.sessionAttribute("currentUser");
-        if (quoteTitle == null || quoteAuthor == null)
-        {
-            ctx.attribute("", "Du skal skrive en titel");
-            ctx.redirect("/motivational/newmotivational");
-        } else
-        {
-            try
-            {
-                MotivationMapper.newMotivation(quoteTitle, quoteText, "", quoteAuthor, connectionPool);
-            } catch (DatabaseException e)
-            {
-                throw new RuntimeException(e.getMessage());
-            }
-        }
     }
 
 
     private static void addMotivation(Context ctx, ConnectionPool pool){
 
-        String quoteTitel = ctx.formParam("motivational_quote");
-        String quoteText = ctx.formParam("motivational_quote");
+        String quoteTitel = ctx.formParam("quote-title");
+        String quoteText = ctx.formParam("quote-text");
 
         User author = ctx.sessionAttribute("currentUser");
         if(author == null || quoteTitel == null || quoteText == null) {
