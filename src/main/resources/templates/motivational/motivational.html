@@ -31,19 +31,21 @@
     </div>
 
 
-    <h4> Log ind og upload dit eget </h4>
-    <form class="generic-form" method="post">
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" placeholder="Enter your username" id="username" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" placeholder="Enter your password" id="exampleInputPassword1">
-        </div>
-        <button class="btn btn-ok" type="submit" formaction="/login">Login</button>
-        <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
-    </form>
+    <div th:if="${#ctx.session.currentUser == null}">
+        <h4> Log ind og upload dit eget </h4>
+        <form class="generic-form" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Enter your username" id="username" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter your password" id="exampleInputPassword1">
+            </div>
+            <button class="btn btn-ok" type="submit" formaction="/login">Login</button>
+            <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+        </form>
+    </div>
 
 
     <footer th:replace="~{fragments :: footer}" class="footer-container"></footer>
