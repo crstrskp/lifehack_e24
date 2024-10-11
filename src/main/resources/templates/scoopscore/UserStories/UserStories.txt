@@ -1,0 +1,5 @@
+As a guest I want to see other users’ choices for comparison to my own choices.
+As a user I want to view my previous choices if I enter the site at a later date.
+As a user I want to share my tier list with others to engage in conversations with others.
+As an Admin I want to listen to the community and add new flavors based on user suggestions.
+As a super Admin I want to be able to remove flavors if they are not fitting for the site.

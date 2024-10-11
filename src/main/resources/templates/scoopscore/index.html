@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>ScoopScoreIndex</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../css/styles.css">
+<link rel="stylesheet" href="../../css/scoopscore.css">
+</head>
+
+<body>
+
+<div class="page">
+    <header>
+        <a href="../index.html" th:href="@{/}">
+            <img class="card-image" alt="logo" src="../../images/lifehacklogo.png"
+                 th:src="@{/images/lifehacklogo.png}"/>
+        </a>
+    </header>
+
+    <h1>ScoopScore</h1>
+
+  <div class="cards">
+    <div class="card">
+      <img class="card-image" alt="scoopscore" src="../public/images/blank_list.png"
+           th:src="@{/images/scoopscore/blank_list.png}"/>
+      <div class="card-copy">View/Create my rank list</div>
+      <a class="card-link" href="pages/myranklist.html">My Rank list</a>
+    </div>
+    <div class="card">
+      <img class="card-image" alt="scoopscore" src="../public/images/all_lists.png"
+           th:src="@{/images/scoopscore/all_lists.png}"/>
+      <div class="card-copy">View other user's rank lists and vote on them!</div>
+      <a class="card-link" a href="allranklists.html" th:href="@{/allranklists}">All rank lists</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
