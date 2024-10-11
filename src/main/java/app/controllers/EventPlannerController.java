@@ -1,0 +1,125 @@
+package app.controllers;
+
+import app.entities.EventPlanner;
+import app.entities.User;
+import app.exceptions.DatabaseException;
+import app.persistence.ConnectionPool;
+import app.persistence.EventPlannerMapper;
+import io.javalin.Javalin;
+import io.javalin.http.Context;
+
+import java.util.List;
+
+public class EventPlannerController {
+    public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
+        app.get("/eventplanner", ctx -> index(ctx, connectionPool));
+        app.get("/eventplanner/create", ctx -> ctx.render("/eventplanner/createevent.html"));
+        app.post("/eventplanner/create", ctx -> createEvent(ctx, connectionPool));
+        app.post("/eventplanner/delete", ctx -> deleteEvent(ctx, connectionPool));
+        app.post("/eventplanner/leave", ctx -> leaveEvent(ctx, connectionPool));
+        app.post("/eventplanner/join", ctx -> joinEvent(ctx, connectionPool));
+    }
+
+    private static void index(Context ctx, ConnectionPool connectionPool) {
+        List<EventPlanner> eventPlannerList = null;
+        try {
+            eventPlannerList = EventPlannerMapper.getAllEvents("eventDate", connectionPool);
+        } catch (DatabaseException e) {
+            //throw new RuntimeException(e);
+        }
+        ctx.attribute("eventPlannerList", eventPlannerList);
+        ctx.render("/eventplanner/index.html");
+    }
+
+    private static void createEvent(Context ctx, ConnectionPool connectionPool) {
+        User currentuser = ctx.sessionAttribute("currentUser");
+        String eventDate = ctx.formParam("eventdateandtime");
+        String eventTitle = ctx.formParam("eventtitle");
+        String eventLocation = ctx.formParam("eventlocation");
+        String eventDescription = ctx.formParam("eventdescription");
+
+        if (eventTitle == null || eventTitle.length() <= 3) {
+            ctx.attribute("message", "Event name must be at least 3 characters long");
+            ctx.render("/eventplanner/createevent.html");
+            return;
+        }
+
+        try {
+            EventPlanner newEvent = EventPlannerMapper.createEvent(currentuser, eventDate, eventLocation, eventTitle, eventDescription, connectionPool);
+            ctx.attribute("message", "Event created.");
+            index(ctx, connectionPool);
+
+        } catch (DatabaseException e) {
+            ctx.attribute("message", "Something went wrong, Try again");
+            ctx.render("/eventplanner/createevent.html");
+        }
+    }
+
+    public static void deleteEvent(Context ctx, ConnectionPool connectionPool) {
+        User currentUser = ctx.sessionAttribute("currentuser");
+        int eventId = Integer.parseInt(ctx.formParam("eventid"));
+
+        if (currentUser != null) {
+            try {
+                boolean isOwner = EventPlannerMapper.isEventOwner(eventId, currentUser.getUserId(), connectionPool);
+                if (isOwner) {
+                    EventPlannerMapper.deleteEvent(eventId, connectionPool);
+                    ctx.attribute("message", "Event deleted.");
+                } else {
+                    ctx.attribute("message", "You are not the owner of this event.");
+                }
+            } catch (DatabaseException e) {
+                ctx.attribute("message", "Something went wrong, try again.");
+            }
+        } else {
+            ctx.attribute("message", "You must be logged in to delete an event.");
+        }
+        ctx.render("/eventplanner/index.html");
+    }
+
+    public static void leaveEvent(Context ctx, ConnectionPool connectionPool) {
+        int eventId = Integer.parseInt(ctx.formParam("eventid"));
+        User currentUser = ctx.sessionAttribute("currentuser");
+
+        if (currentUser != null) {
+            try {
+                boolean isParticipant = EventPlannerMapper.isUserParticipant(eventId, currentUser.getUserId(), connectionPool);
+                if (isParticipant) {
+                    EventPlannerMapper.leaveEvent(eventId, currentUser, connectionPool);
+                    ctx.attribute("message", "You have left the event.");
+                } else {
+                    ctx.attribute("message", "You are not a participant of this event.");
+                }
+                ctx.render("/eventplanner/index.html");
+            } catch (DatabaseException e) {
+                ctx.attribute("message", "Something went wrong, Try again");
+                ctx.render("/eventplanner/index.html");
+            }
+        } else {
+            ctx.attribute("message", "You must be logged in to leave an event.");
+            ctx.render("/eventplanner/index.html");
+        }
+    }
+
+    public static void joinEvent(Context ctx, ConnectionPool connectionPool) {
+
+        User currentUser = ctx.sessionAttribute("currentUser");
+        int eventId = Integer.parseInt(ctx.formParam("eventid"));
+
+        if (currentUser != null) {
+
+            try {
+                EventPlannerMapper.joinEvent(eventId, currentUser, connectionPool);
+                ctx.attribute("message", "Event joined.");
+                ctx.render("/eventplanner/index.html");
+            } catch (DatabaseException e) {
+                ctx.attribute("message", "Something went wrong, try again.");
+                ctx.render("/eventplanner/index.html");
+            }
+        } else {
+
+            ctx.attribute("message", "You must be logged in to join an event.");
+            ctx.render("/eventplanner/index.html");
+        }
+    }
+}
