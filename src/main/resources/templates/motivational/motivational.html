@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Motivational 8-ball</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../public/css/motivational.css" th:href="@{/css/motivational.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container p-5">
+    <header class="">
+        <a href="../index.html" th:href="@{/}">
+            <img alt="logo" class="img-fluid" src="../../public/images/motivationLogoWide.png" th:src="@{/images/motivationLogoWide.png}"/>
+        </a>
+    </header>
+    <h1 class="mb-3">Motivational Quotes</h1>
+    <div class="card mb-5 motivation">
+        <div class="card-body" th:if="${motivation != null}">
+            <h5 class="card-title" th:text="${motivation.motivationTitle}">Få et tilfældigt citat vist neden for</h5>
+            <p class="card-text" th:text="${motivation.motivationText}"></p>
+            <a th:href="@{/motivational}" href="/motivational.html" class="btn btn-primary m-3">Giv mig motivation</a>
+            <a th:if="${#ctx.session.currentUser != null}" th:href="@{/motivational/addmotivation}" href="/motivational/addmotivation" class="btn btn-primary"> Add new motivation</a>
+            <form method="post" th:action="@{/motivational/addtofavorites}">
+                <input type="hidden" name="favorite-id" th:value="${motivation.motivationId}">
+                <button th:if="${#ctx.session.currentUser != null}" class="btn btn-primary" type="submit">Gem denne motivation</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div th:if="${#ctx.session.currentUser == null}">
+        <h4> Log ind og upload dit eget </h4>
+        <form class="generic-form" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Enter your username" id="username" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter your password" id="exampleInputPassword1">
+            </div>
+            <button class="btn btn-ok" type="submit" formaction="/login">Login</button>
+            <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+        </form>
+    </div>
+
+
+    <footer th:replace="~{fragments :: footer}" class="footer-container"></footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+

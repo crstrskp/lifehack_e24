@@ -86,47 +86,25 @@ h3 {
     justify-content: center;
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    min-width: 100px;
-    max-width: 200px;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid silver;
-    border-radius: 8px;
-}
-
-.card-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px 8px 0px 0px;
-}
-
-.card-link {
-    font-family: "Helvetica Neue";
-    padding: 10px;
-    font-size: 0.85rem;
-    color: white;
-    border: solid 1px silver;
-    text-decoration: none;
-    background-color: darkblue;
-    margin-bottom: 10px;
-    border-radius: 10px;
-}
 
 .card-link:hover {
     background-color: #2566ac;
 }
 
-.card-copy {
-    font-family: "Helvetica Neue";
-    padding: 10px;
-    font-size: 0.85rem;
+.btn-favorite {
+    color: blue;
 }
 
-.quote-btn {
-    padding: 7px;
-    border-radius: 5px;
-    border: 1px solid silver;
+.btn-favorite:hover {
+    background-color: #2566ac;
+}
+
+.motivation {
+    background-color: lightskyblue;
+}
+
+.btn {
+    background-color: lightblue;
+    color: white;
+
 }
