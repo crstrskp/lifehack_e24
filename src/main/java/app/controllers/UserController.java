@@ -64,7 +64,7 @@ public class UserController
         try
         {
             User user = UserMapper.login(username, password, connectionPool);
-            ctx.sessionAttribute("currentUser", user);
+            ctx.sessionAttribute("currentUser", user); // tilføj til din arraylist. public static User currentUser
             // Hvis ja, send videre til forsiden med login besked
             ctx.attribute("message", "Du er nu logget ind");
             ctx.render("index.html");

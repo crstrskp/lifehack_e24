@@ -1,10 +1,7 @@
 package app;
 
 import app.config.ThymeleafConfig;
-import app.controllers.MotivationController;
-import app.controllers.TimeZonesController;
-import app.controllers.UserController;
-import app.controllers.WarhammerController;
+import app.controllers.*;
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
@@ -33,8 +30,9 @@ public class Main
         app.get("/", ctx -> ctx.render("index.html"));
 
         UserController.addRoutes(app, connectionPool);
-        TimeZonesController.addRoutes(app);
+
         WarhammerController.addRoutes(app);
-        MotivationController.addRoutes(app, connectionPool);
+        GameDevController.addRoutes(app);
+        GraphController.addRoutes(app);
     }
 }
