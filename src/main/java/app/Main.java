@@ -34,5 +34,8 @@ public class Main
         WarhammerController.addRoutes(app);
         GameDevController.addRoutes(app);
         GraphController.addRoutes(app);
+        PacmanController.addRoutes(app);
+        MapsController.addRoutes(app);
+
     }
 }
