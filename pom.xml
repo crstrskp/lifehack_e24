@@ -101,7 +101,7 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <outputFile>${project.build.directory}/app.jar</outputFile> <!-- Directly specifies app.jar as the output file -->
+                    <outputFile>${project.build.directory}/lifehack.jar</outputFile> <!-- Directly specifies app.jar as the output file -->
                     <transformers>
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                             <mainClass>${project.groupId}.Main</mainClass>
