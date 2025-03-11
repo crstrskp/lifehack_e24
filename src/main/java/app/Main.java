@@ -1,9 +1,7 @@
 package app;
 
 import app.config.ThymeleafConfig;
-import app.controllers.TimeZonesController;
-import app.controllers.UserController;
-import app.controllers.WarhammerController;
+import app.controllers.*;
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
@@ -26,13 +24,15 @@ public class Main
             config.staticFiles.add("/public");
             config.fileRenderer(new JavalinThymeleaf(ThymeleafConfig.templateEngine()));
             config.staticFiles.add("/templates");
-        }).start(7070);
+        }).start(7071);
 
         // Routing
         app.get("/", ctx -> ctx.render("index.html"));
 
         UserController.addRoutes(app, connectionPool);
-        TimeZonesController.addRoutes(app);
+
         WarhammerController.addRoutes(app);
+        GameDevController.addRoutes(app);
+        GraphController.addRoutes(app);
     }
 }
